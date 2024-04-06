@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.box_shadow_black {
+    box-shadow: 0px 0px 6px 3px rgba(85, 84, 84, 0.107);
+}
+.auth_bg{
+    background-image: url('./assets/pexels-alena-koval-961402.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
