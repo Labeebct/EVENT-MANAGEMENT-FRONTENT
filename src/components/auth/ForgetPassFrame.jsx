@@ -1,6 +1,6 @@
 const ForgetPassFrame = () => {
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.07rem]  bg-[#ffffff04]  flex flex-col items-center translate-y-5 h-[420px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96] flex flex-col items-center translate-y-5 h-[420px] rounded-md box_shadow_black">
       <h3 className="text-[1.7rem] font-playfair mt-9   ">Forget password</h3>
       <h3 className="mt-7 font-roboto opacity-85">Entered your registered email address</h3>
       

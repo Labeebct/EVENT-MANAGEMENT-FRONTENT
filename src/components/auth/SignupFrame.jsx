@@ -3,7 +3,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 function SignupFrame() {
     return (
-        <div className="w-[35%] min-w-[290px] backdrop-blur-[.07rem]  bg-[#ffffff04]  flex flex-col items-center translate-y-5 h-[620px] rounded-md box_shadow_black">
+        <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[620px] rounded-md box_shadow_black">
           <h3 className="text-[2rem] font-playfair mt-7">Signup</h3>
           <form
               className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-4 gap-4 flex-1"

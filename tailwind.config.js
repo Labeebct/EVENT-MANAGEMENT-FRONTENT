@@ -10,14 +10,18 @@ export default {
         cusBlue:'#F8E8EE',
         cusOrange:'#D82C34'
       },
+      boxShadow: {
+        'box': '0px 0px 8px rgba(0, 0, 0, 0.2)',
+      },
       fontFamily: {
         cagliostro: ['Cagliostro', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         playfair: ['Playfair Display', 'serif'],
         poiretOne: ['Poiret One', 'cursive'],
         poppins: ['Poppins', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif']
-    },textShadow: {
+        roboto: ['Roboto', 'sans-serif'],
+        'scope-one': ['Scope One', 'sans-serif'],
+      },textShadow: {
         'sm': '0px 0px 5px rgba(0, 0, 0, 0.5)',
         'md': '1px 1px 10px rgba(0, 0, 0, 0.5)',
         'lg': '2px 2px 15px rgba(0, 0, 0, 0.5)',
