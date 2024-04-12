@@ -5,7 +5,7 @@ import weddingImg from "../../../assets/bg (13).jpg";
 import conferenceImg from "../../../assets/bg (8).jpg";
 
 
-const HomeCatSection = () => {
+const HomeCatSection = ({from}) => {
   const catObj = [
     {
       id:1,
@@ -34,8 +34,10 @@ const HomeCatSection = () => {
   ];
 
   return (
-    <div className="w-full bg-cusBlue m-auto flex-1 gap-3 h-auto flex justify-around py-8 px-4 flex-wrap">
+    <div className={`w-full ${from == 'home' && 'px-7'} h-auto`}>
+    <div className={`w-full ${from == 'home' ? 'bg-cusBlue' : 'bg-white'} bg-cusBlue m-auto rounded-2xl flex-1 gap-3 h-auto flex justify-around ${from == 'home' && 'mt-8'} py-4  px-4 flex-wrap`}>
       <HomeCatFrame catObj={catObj} />
+    </div>
     </div>
   );
 };

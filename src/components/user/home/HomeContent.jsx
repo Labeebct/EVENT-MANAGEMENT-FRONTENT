@@ -18,7 +18,7 @@ const HomeContent = () => {
           &ldquo;Transforming Moments into Memories&rdquo;
         </h3>{" "}
       </div>
-      <HomeCatSection />
+      <HomeCatSection from={'home'} />
       <HomeWedding />
       <WeddingRound />
       <HomePriceToSuit />
