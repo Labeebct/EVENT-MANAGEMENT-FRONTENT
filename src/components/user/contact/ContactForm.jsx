@@ -2,13 +2,14 @@ import contactImg from "../../../assets/contact.png";
 
 const ContactForm = () => {
   return (
-    <div className="w-full h-auto flex justify-center">
+    <>
+    <div className="w-full flex justify-center items-center contact_bg">
+    <h3 className="text-[3.2rem] mb-10 text-[#ffffff] font-cagliostro">Contact us</h3>
+    </div>
+    <div className="w-full relative h-auto flex justify-center">
       <div className="w-full p-10 h-auto mt-8 sm:mt-0 flex justify-center flex-wrap">
-        <div className="h-[34rem] flex flex-1 justify-center">
-          <form action="" className="w-[70%] min-w-[320px] max-w-[400px] h-auto rounded-sm shadow-box">
-            <h1 className="w-full p-6 text-[1.7rem] text-center text-gray-400 font-inter">
-              Contact Us
-            </h1>
+        <div className="h-[22rem] flex flex-1 justify-center">
+          <form action="" className="w-[40%] py-7 min-w-[340px] absolute -top-28 rounded-md bg-cusBlue h-auto shadow-box">
             <div className="w-full px-10 h-auto flex flex-col mt-2 gap-2">
               <label
                 htmlFor="email"
@@ -72,11 +73,9 @@ const ContactForm = () => {
             </div>
           </form>
         </div>
-        <div className="h-[38rem] hidden flex-1 lg:flex justify-center items-center mr-4">
-          <img src={contactImg} alt="" className="w-auto h-full" />
-        </div>
       </div>
     </div>
+    </>
   );
 };
 

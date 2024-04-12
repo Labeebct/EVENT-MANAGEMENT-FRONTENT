@@ -11,6 +11,13 @@
     background-repeat: no-repeat;
     background-size:cover;
 }
+.contact_bg{
+    background-image: url('./assets/bg (4).jpg');
+    background-position: bottom;
+    height: 17rem;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
 
 .aboutBg {
     position: relative;
