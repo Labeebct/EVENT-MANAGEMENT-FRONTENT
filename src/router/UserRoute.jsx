@@ -11,6 +11,9 @@ import Contactus from "../pages/user/Contactus";
 import Category from "../pages/user/Category";
 import Aboutus from "../pages/user/Aboutus";
 import Events from "../pages/user/Events";
+import PageNotFoundContent from "../components/shared/404Content";
+import InternalServerError from "../pages/shared/500";
+import Profile from "../pages/user/Profile";
 
 const UserRoute = () => {
   return (
@@ -27,7 +30,12 @@ const UserRoute = () => {
         <Route path="/category" element={<Category />} />
         <Route path="/about" element={<Aboutus />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
+      
+      <Route path="*" element={<PageNotFoundContent/>} />
+      <Route path="/404" element={<PageNotFoundContent/>} />
+      <Route path="/500" element={<InternalServerError/>} />
     </Routes>
   );
 };

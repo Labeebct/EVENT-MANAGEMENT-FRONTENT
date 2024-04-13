@@ -1,6 +1,8 @@
+import EventsContent from "../../components/user/events/EventsContent"
+
 const Events = () => {
   return (
-    <div>Events</div>
+    <EventsContent />
   )
 }
 

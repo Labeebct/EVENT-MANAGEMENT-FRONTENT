@@ -1,9 +1,9 @@
-const HomeCatFrame = ({ catObj }) => {
+const HomeCatFrame = ({ catObj , from }) => {
   return (
     <>
       {catObj.map((list) => (
         <div
-          className="w-[20%] duration-200 ease-in-out hover:-translate-y-2 bg-white flex justify-center flex-col shadow-box my-5 rounded-[.3rem] min-w-[300px] h-auto p-4"
+          className={`w-[20%] duration-200 ease-in-out ${from == 'home' && 'hover:-translate-y-2'} bg-white flex justify-center flex-col shadow-box my-5 rounded-[.3rem] min-w-[300px] h-auto p-4`}
           key={list.id}
         >
           <img

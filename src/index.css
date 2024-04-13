@@ -18,6 +18,24 @@
     background-repeat: no-repeat;
     background-size:cover;
 }
+.pageNot_foundBg{
+    background-image: url('./assets/404.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+.server_errorBg{
+    background-image: url('./assets/500.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+.profile_bg{
+    background-image: url('./assets/pro_3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
 
 .aboutBg {
     position: relative;

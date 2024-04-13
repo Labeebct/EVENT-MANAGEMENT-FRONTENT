@@ -4,6 +4,7 @@ import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import InfoIcon from "@mui/icons-material/Info";
 import PhoneIcon from "@mui/icons-material/Phone";
+import PersonIcon from "@mui/icons-material/Person";
 
 const Header = () => {
   const Navigate = useNavigate();
@@ -64,7 +65,12 @@ const Header = () => {
             </Link>
           </ul>
         </div>
-        <div className="flex-4">
+        <div className="flex-4 gap-4 flex items-center">
+          <Link to={"/profile"}>
+            <button className="duration-100 ease-out active:scale-[.95]">
+              <PersonIcon sx={{ fontSize: "1.65rem", opacity: ".8" }} />
+            </button>
+          </Link>
           <button
             onClick={() => Navigate("/login")}
             className="font-[300] font-inter text-[.85rem] border-[#53515130] bg-white text-cusOrange border-2 p-[.46rem]"
