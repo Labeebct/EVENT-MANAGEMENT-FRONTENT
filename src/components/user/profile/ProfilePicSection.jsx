@@ -15,7 +15,7 @@ const ProfilePicSection = () => {
                 <div className="my-4 p-2 px-4 bg-cusOrange text-white font-poppins font-medium text-[.7rem] rounded-sm">
                   CHOOSE FILE
                 </div>
-                <input className="absolute opacity-0"
+                <input className="absolute opacity-0 w-full"
                  type="file" encType="multipart/form-data"
                  name="foodImg"/>
               </div>

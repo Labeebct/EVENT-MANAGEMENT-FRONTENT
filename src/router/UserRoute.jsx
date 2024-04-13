@@ -14,6 +14,7 @@ import Events from "../pages/user/Events";
 import PageNotFoundContent from "../components/shared/404Content";
 import InternalServerError from "../pages/shared/500";
 import Profile from "../pages/user/Profile";
+import EventDetails from "../pages/user/EventDetails";
 
 const UserRoute = () => {
   return (
@@ -31,6 +32,7 @@ const UserRoute = () => {
         <Route path="/about" element={<Aboutus />} />
         <Route path="/events" element={<Events />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/event_details" element={<EventDetails />} />
       </Route>
       
       <Route path="*" element={<PageNotFoundContent/>} />

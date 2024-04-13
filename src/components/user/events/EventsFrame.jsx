@@ -15,7 +15,7 @@ const EventsFrame = () => {
           <div class="text-[.9rem] font-scope-one font-bold text-gray-700">Capacity: 200</div>
           <div class="text-[.9rem] font-scope-one font-bold text-gray-700">Location: City, Country</div>
         </div>
-        <button className="bg-cusOrange text-[.8rem] sm:text-[.9rem] md:text-[1rem] font-inter ease-in-out duration-200 active:scale-[.95] rounded-sm filter text-white shadow-box p-4">
+        <button className="bg-cusOrange text-[.8rem] sm:text-[.9rem] md:text-[1rem] font-inter ease-in-out duration-200 active:scale-[.95] rounded-sm filter text-white shadow-box p-3">
           Check Availability
         </button>
       </div>
