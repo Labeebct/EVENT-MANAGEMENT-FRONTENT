@@ -2,7 +2,9 @@ import React from 'react'
 
 const EventDetailsFrame = () => {
   return (
-    <div>EventDetailsFrame</div>
+    <div className='h-[33rem] w-[90%] shadow-box'>
+asdasdADS
+    </div>
   )
 }
 

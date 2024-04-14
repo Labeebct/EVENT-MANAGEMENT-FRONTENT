@@ -1,4 +1,4 @@
-import weddingImg from "../../../assets/bg (14).jpg";
+import weddingImg from "../../../assets/bg (7).jpg";
 
 const EventsFrame = () => {
   return (

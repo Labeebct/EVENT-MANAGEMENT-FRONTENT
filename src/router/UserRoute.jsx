@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
 import UserLayout from "../layout/UserLayout";
-import Login from "../pages/auth/Login";
-import Signup from "../pages/auth/Signup";
-import Otp from "../pages/auth/Otp";
-import ForgetPassword from "../pages/auth/ForgetPassword";
-import ResetPassword from "../pages/auth/ResetPassword";
+import Login from "../pages/userAuth/Login";
+import Signup from "../pages/userAuth/Signup";
+import Otp from "../pages/userAuth/Otp";
+import ForgetPassword from "../pages/userAuth/ForgetPassword";
+import ResetPassword from "../pages/userAuth/ResetPassword";
 import Home from "../pages/user/Home";
 import Contactus from "../pages/user/Contactus";
 import Category from "../pages/user/Category";
