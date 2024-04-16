@@ -1,9 +1,10 @@
 import React from 'react'
-import LeftBar from '../../components/admin/common/LeftBar'
+import DashBoardContent from '../../components/admin/dashboard/DashBoardContent'
 
 const Dashboard = () => {
   return (
     <div className='h-full w-full'>
+      <DashBoardContent />
     </div>
   )
 }
