@@ -9,7 +9,7 @@ const AdminLayout = () => {
      <LeftBar />
      <div className='h-full w-full'>
         <Header  />
-        <div className='h-[calc(100vh-4rem)]  overflow-y-auto  w-full'>
+        <div className='h-[calc(100vh-4rem)]  overflow-y-auto bg-slate-200  w-full'>
         <Outlet/>
         </div>
      </div>

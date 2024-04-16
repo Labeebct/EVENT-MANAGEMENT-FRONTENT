@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
-import LunchDiningIcon from "@mui/icons-material/LunchDining";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import EventSeatIcon from "@mui/icons-material/EventSeat";
+import CategoryIcon from "@mui/icons-material/Category";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -14,6 +14,29 @@ function LeftBar() {
 
   const [page, setPage] = useState("");
   const [leftNav, setLeftNav] = useState(false);
+
+  const location = useLocation();
+  const currentLocation = location.pathname;
+
+  useEffect(() => {
+    switch (currentLocation) {
+      case "/admin/dashboard":
+        setPage("Dashboard");
+        break;
+      case "/admin/events":
+        setPage("Events");
+        break;
+      case "/admin/category":
+        setPage("Category");
+        break;
+      case "/admin/users":
+        setPage("Users");
+        break;
+      default:
+        setPage("");
+        break;
+    }
+  }, [currentLocation]);
 
   return (
     <div
@@ -39,40 +62,36 @@ function LeftBar() {
       <ul className={`w-full h-full flex flex-col`}>
         <Link to="/admin/dashboard">
           <li
-            onClick={() => setPage("Dashboard")}
             className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Dashboard" ? "bg-[#c0bebe2f]" : ""
             }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
           >
-            <HomeIcon sx={{ fontSize: 20 }} />
+            <EqualizerIcon sx={{ fontSize: 20 }} />
             Dashboard
           </li>
         </Link>
         <Link to="/admin/events">
           <li
-            onClick={() => setPage("events")}
             className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
-              page === "events" ? "bg-[#c0bebe2f]" : ""
+              page === "Events" ? "bg-[#c0bebe2f]" : ""
             }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
           >
-            <LunchDiningIcon sx={{ fontSize: 20 }} />
+            <EventSeatIcon sx={{ fontSize: 20 }} />
             Events
           </li>
         </Link>
         <Link to="/admin/category">
           <li
-            onClick={() => setPage("category")}
             className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
-              page === "category" ? "bg-[#c0bebe2f]" : ""
+              page === "Category" ? "bg-[#c0bebe2f]" : ""
             }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
           >
-            <LocalShippingIcon sx={{ fontSize: 20 }} />
+            <CategoryIcon sx={{ fontSize: 20 }} />
             Category
           </li>
         </Link>
         <Link to="/admin/users">
           <li
-            onClick={() => setPage("Users")}
             className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Users" ? "bg-[#c0bebe2f]" : ""
             }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}

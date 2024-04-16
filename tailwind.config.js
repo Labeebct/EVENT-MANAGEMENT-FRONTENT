@@ -30,6 +30,8 @@ export default {
       theme: {
         screens: {
 
+          'xs': '500px',
+          
           'sm': '640px',
     
           'md': '868px',
