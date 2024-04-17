@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import AddEventFrame from "./AddEventFrame";
 
 const AddEventContent = () => {
   return (
-    <div>AddEventContent</div>
-  )
-}
+    <div className="h-full w-full p-5">
+      <AddEventFrame />
+    </div>
+  );
+};
 
-export default AddEventContent
+export default AddEventContent;

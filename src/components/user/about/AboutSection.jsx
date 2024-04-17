@@ -7,13 +7,13 @@ import about4 from "../../../assets/about (4).jpg";
 
 const aboutObj = [
   {
-    img: about1,
+    img: about2,
     title: "Successful Business Collaboration",
     discription:
       "At Strategic Event Solutions, we specialize in crafting seamless and impactful events that drive growth and success. Just like the diverse icons in our logo, representing growth, communication, innovation, and achievement, we are committed to delivering exceptional event experiences tailored to your goals. Whether its corporate functions, conferences, or special celebrations, we bring creativity and expertise to every handshake, ensuring your events shine with excellence.",
   },
   {
-    img: about2,
+    img: about1,
     title: "Creative Customer Connections",
     discription:
       "At Labio, we pride ourselves on fostering innovative and personalized connections with our clients. Just like the symbolic light bulb hovering over the interaction between our team and customers, we illuminate ideas and bring visions to life. Whether you are planning a special event or seeking tailored solutions, our customer-centric approach ensures a collaborative journey towards success. Let us brighten your experiences with creativity and dedication",
