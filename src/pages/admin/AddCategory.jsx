@@ -1,8 +1,9 @@
 import React from 'react'
+import AddCategoryContent from '../../components/admin/addcategory/AddCategoryContent'
 
 const AddCategory = () => {
   return (
-    <div>AddCategory</div>
+    <AddCategoryContent />
   )
 }
 

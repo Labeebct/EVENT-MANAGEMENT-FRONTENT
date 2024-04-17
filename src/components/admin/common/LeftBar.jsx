@@ -8,9 +8,9 @@ import CategoryIcon from "@mui/icons-material/Category";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 function LeftBar() {
-  const navigate = useNavigate();
 
   const [page, setPage] = useState("");
   const [leftNav, setLeftNav] = useState(false);
@@ -32,6 +32,9 @@ function LeftBar() {
       case "/admin/users":
         setPage("Users");
         break;
+      case "/admin/bookings":
+        setPage("Bookings");
+        break;
       default:
         setPage("");
         break;
@@ -44,7 +47,7 @@ function LeftBar() {
         leftNav ? "w-[13rem] absolute z-10" : "w-[3.2rem]"
       } ease-linear duration-300 xl:w-[15rem] h-full overflow-hidden border-r border-slate-600 border-opacity-20 bg-[#0e333d]`}
     >
-      <div className="mb-2 mt-3">
+      <div className="mb-1 mt-2">
         <h3 className="hidden xl:flex p-6 font-[600] font-serif tracking-[.4rem] text-[1.4rem] sm:text-[1.3rem] md:text-[1.4rem] text-cusOrange">
           LABIO
         </h3>
@@ -62,9 +65,9 @@ function LeftBar() {
       <ul className={`w-full h-full flex flex-col`}>
         <Link to="/admin/dashboard">
           <li
-            className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Dashboard" ? "bg-[#c0bebe2f]" : ""
-            }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
             <EqualizerIcon sx={{ fontSize: 20 }} />
             Dashboard
@@ -72,9 +75,9 @@ function LeftBar() {
         </Link>
         <Link to="/admin/events">
           <li
-            className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Events" ? "bg-[#c0bebe2f]" : ""
-            }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
             <EventSeatIcon sx={{ fontSize: 20 }} />
             Events
@@ -82,19 +85,29 @@ function LeftBar() {
         </Link>
         <Link to="/admin/category">
           <li
-            className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Category" ? "bg-[#c0bebe2f]" : ""
-            }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
             <CategoryIcon sx={{ fontSize: 20 }} />
             Category
           </li>
         </Link>
+        <Link to="/admin/bookings">
+          <li
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+              page === "Bookings" ? "bg-[#c0bebe2f]" : ""
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
+          >
+            <BookmarkAddedIcon sx={{ fontSize: 20 }} />
+            Bookings
+          </li>
+        </Link>
         <Link to="/admin/users">
           <li
-            className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
               page === "Users" ? "bg-[#c0bebe2f]" : ""
-            }  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
             <PeopleAltIcon sx={{ fontSize: 20 }} />
             Users
@@ -102,7 +115,7 @@ function LeftBar() {
         </Link>
         <Link to="/admin/login">
           <li
-            className={`px-4 py-5 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center  hover:bg-[#d4d4d41e] border-opacity-10 cursor-pointer font-inter`}
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
             <LogoutIcon sx={{ fontSize: 20 }} />
             Logout

@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import AddIcon from "@mui/icons-material/Add";
 
 const Header = () => {
   const location = useLocation();
+  const Navigate = useNavigate()
   const currentLocation = location.pathname;
 
   const getTitle = () => {
@@ -17,6 +18,12 @@ const Header = () => {
         return "Category";
       case "/admin/users":
         return "Users";
+      case "/admin/add-category":
+        return "Add Category";
+      case "/admin/add-event":
+        return "Add Event";
+      case "/admin/bookings":
+        return "Bookings";
     }
   };
 
@@ -25,13 +32,13 @@ const Header = () => {
       <h1 className="font-inter text-[1.1rem]">{getTitle()}</h1>
       <div>
         {getTitle() == "Events" && (
-          <button className="p-2 bg-[#243d38] mr-8 font-inter text-[.8rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
-            Add Event <AddIcon sx={{fontSize:'23px'}} />
+          <button onClick={()=> Navigate('/admin/add-event')} className="p-2 bg-[#243d38] mr-8 font-inter text-[.8rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
+            Add Event <AddIcon sx={{ fontSize: "23px" }} />
           </button>
         )}
         {getTitle() == "Category" && (
-          <button className="p-2 bg-[#243d38] mr-8 font-inter text-[.8rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
-            Add Category <AddIcon sx={{fontSize:'23px'}} /> 
+          <button onClick={()=> Navigate('/admin/add-category')} className="p-2 bg-[#243d38] mr-8 font-inter text-[.8rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
+            Add Category <AddIcon sx={{ fontSize: "23px" }} />
           </button>
         )}
         <Link to={"/profile"}>
