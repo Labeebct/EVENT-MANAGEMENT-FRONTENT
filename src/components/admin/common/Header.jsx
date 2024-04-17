@@ -24,6 +24,8 @@ const Header = () => {
         return "Add Event";
       case "/admin/bookings":
         return "Bookings";
+      case "/admin/messages":
+        return "Messages";
     }
   };
 

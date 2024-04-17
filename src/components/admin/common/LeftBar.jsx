@@ -9,6 +9,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+import ChatIcon from '@mui/icons-material/Chat';
 
 function LeftBar() {
 
@@ -34,6 +35,9 @@ function LeftBar() {
         break;
       case "/admin/bookings":
         setPage("Bookings");
+        break;
+      case "/admin/messages":
+        setPage("Messages");
         break;
       default:
         setPage("");
@@ -111,6 +115,16 @@ function LeftBar() {
           >
             <PeopleAltIcon sx={{ fontSize: 20 }} />
             Users
+          </li>
+        </Link>
+        <Link to="/admin/messages">
+          <li
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+              page === "Messages" ? "bg-[#c0bebe2f]" : ""
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
+          >
+            <ChatIcon sx={{ fontSize: 20 }} />
+            Messages
           </li>
         </Link>
         <Link to="/admin/login">
