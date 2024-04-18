@@ -35,7 +35,7 @@ const HomeCatSection = ({from}) => {
 
   return (
     <div className={`w-full ${from == 'home' && 'px-7'} h-auto`}>
-    <div className={`w-full ${from == 'home' ? 'bg-cusBlue' : 'bg-white'} bg-cusBlue m-auto rounded-2xl flex-1 gap-3 h-auto flex justify-around ${from == 'home' && 'mt-8'} ${from == 'category' && 'sm:mt-0 mt-6'}  py-4  px-4 flex-wrap`}>
+    <div className={`w-full ${from == 'home' ? 'bg-cusBlue' : 'bg-white'} bg-cusBlue m-auto rounded-md flex-1 gap-3 h-auto flex justify-around ${from == 'home' && 'mt-8'} ${from == 'category' && 'sm:mt-0 mt-6'}  py-4  px-4 flex-wrap`}>
       <HomeCatFrame from={from} catObj={catObj} />
     </div>
     </div>

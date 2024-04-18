@@ -12,10 +12,10 @@ const ContactForm = () => {
       </div>
       <div className="w-full  h-auto  flex justify-center">
         <div className="w-full p-10 h-auto mt-8 sm:mt-0 flex justify-center flex-wrap">
-          <div className="h-auto flex flex-col md:flex-row items-center flex-1 justify-center">
+          <div className="h-auto flex flex-col lg:flex-row items-center flex-1 justify-center">
             <form
               action=""
-              className="w-[37%]  md:translate-x-5 -translate-y-40 py-5 min-w-[340px] rounded-[.3rem] bg-white h-auto shadow-box"
+              className="w-[37%]  lg:translate-x-5 -translate-y-40 py-5 min-w-[340px] rounded-[.3rem] bg-white h-auto shadow-box"
             >
               <div className="w-full px-10 h-auto flex flex-col mt-2 gap-2">
                 <label
@@ -33,7 +33,7 @@ const ContactForm = () => {
                 <label
                   htmlFor="email"
                   className="font-roboto  text-[#808080db] text-[.75rem]"
-                >
+                > 
                   Email
                 </label>
                 <div className="h-[2.5rem] border border-[#6c6c6c15] relative shadow-md outline-none  text-[.9rem]  bg-gray-50">
@@ -79,10 +79,10 @@ const ContactForm = () => {
                 </button>
               </div>
             </form>
-            <div className="flex-1 -translate-y-32 md:-translate-y-5 w-full gap-3 h-full flex flex-col items-center">
-              <div className="w-[70%] md:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-[1rem] bg-gray-200">
+            <div className="flex-1 -translate-y-32 lg:-translate-y-5 w-full gap-3 h-full flex flex-col items-center">
+              <div className="w-[70%] lg:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-[1rem] bg-gray-200">
                 <div className="min-w-28 flex justify-center items-center">
-                  <InstagramIcon sx={{ fontSize: "40px", opacity: ".8" }} />
+                  <InstagramIcon sx={{ fontSize: "40px", opacity: ".7" }} />
                 </div>
                 <div className="flex-2 flex flex-col justify-center gap-2">
                   <h1 className="font-bold text-[1.1rem] font-inter">
@@ -98,9 +98,9 @@ const ContactForm = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-[70%] md:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-4 bg-gray-200">
+              <div className="w-[70%] lg:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-4 bg-gray-200">
                 <div className="min-w-28 flex justify-center items-center">
-                  <MailOutlineIcon sx={{ fontSize: "40px", opacity: ".8" }} />
+                  <MailOutlineIcon sx={{ fontSize: "40px", opacity: ".7" }} />
                 </div>
                 <div className="flex-2 flex flex-col justify-center gap-2">
                   <h1 className="font-bold text-[1.1rem] font-inter">
@@ -116,9 +116,9 @@ const ContactForm = () => {
                   </button>
                 </div>
               </div>
-              <div className="w-[70%] md:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-4 bg-gray-200">
+              <div className="w-[70%] lg:ml-40 ml-0 rounded-md  min-w-[370px] flex h-auto py-4 bg-gray-200">
                 <div className="min-w-28 flex justify-center items-center">
-                  <CallIcon sx={{ fontSize: "40px", opacity: ".8" }} />
+                  <CallIcon sx={{ fontSize: "40px", opacity: ".7" }} />
                 </div>
                 <div className="flex-2 flex flex-col justify-center gap-2">
                   <h1 className="font-bold text-[1.1rem] font-inter">

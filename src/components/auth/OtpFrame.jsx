@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axiosInstance from "../../instance/axiosInstance";
 
 const OtpFrame = () => {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ const OtpFrame = () => {
   // const [otpValue , setOtpValue] = useState()
   const [message, setMessage] = useState("");
   const [verified, setVerified] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Focus the first input when component mounts
@@ -35,6 +35,60 @@ const OtpFrame = () => {
     }
   };
 
+  let api =
+    verifyType === "signup"
+      ? `/otp-verification/${email}`
+      : `/forget-otp-verification/${email}`;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const otpValue = inputsRef.current.map((input) => input.value).join("");
+      if (otpValue.length == 0) setMessage("Please provide the OTP");
+      else if (otpValue.length < 4) setMessage("OTP should be 4 Digits");
+      else {
+        try {
+          //Api route for signup verify
+          const response = await axiosInstance.post(api, { otpValue });
+          const { data, status } = response;
+
+          if (status == 200) {
+            //Setting success message after and redirecting to login page after verification success
+            setMessage(data.msg);
+            setVerified(true);
+            verifyType == "signup"
+              ? setTimeout(() => navigate("/login"), 800)
+              : setTimeout(() => navigate(`/reset-password?email=${data.email}`), 800);
+            }
+        } catch (error) {
+          if (error.response) {
+            const { data, status } = error.response;
+
+            //Handling errors based on status code
+            if (status == 422 || status == 409) {
+              inputsRef.current.map((input) => (input.value = ""));
+              setMessage(data.msg);
+            } else if (status == 403) {
+              setMessage(data.msg);
+              setTimeout(() => navigate("/signup"), 800);
+            }
+            // If verification failed by any malfunction
+            else if (status == 500) {
+              navigate("/500");
+            }
+          } else {
+            navigate("/500");
+            console.log("Error in submit otp", error);
+          }
+        }
+      }
+    } catch (error) {
+      console.log("Error in otphandle submit", error);
+    }
+  };
+
+  message && setTimeout(() => setMessage(""), 1000);
+
   return (
     <div className="w-[35%] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[520px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">OTP</h3>
@@ -57,13 +111,18 @@ const OtpFrame = () => {
             />
           ))}
         </div>
-        <p
-            className='text-center text- text-[.9rem] mt-3 text-red-600'
+        {message && (
+          <p
+            className={`${
+              verified ? "text-green-600" : "text-red-500"
+            } text-center mt-5`}
           >
-            Incorrect password
+            {message}
           </p>
+        )}
         <button
           type="submit"
+          onClick={handleSubmit}
           className="w-full py-2 mt-6 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
         >
           Submit

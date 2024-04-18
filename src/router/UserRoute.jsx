@@ -21,10 +21,10 @@ const UserRoute = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/verify" element={<Otp />} />
+      <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-
+      
       <Route path="/" element={<UserLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contactus />} />
@@ -34,10 +34,10 @@ const UserRoute = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/event_details" element={<EventDetails />} />
       </Route>
-      
-      <Route path="*" element={<PageNotFoundContent/>} />
-      <Route path="/404" element={<PageNotFoundContent/>} />
-      <Route path="/500" element={<InternalServerError/>} />
+
+      <Route path="*" element={<PageNotFoundContent />} />
+      <Route path="/404" element={<PageNotFoundContent />} />
+      <Route path="/500" element={<InternalServerError />} />
     </Routes>
   );
 };

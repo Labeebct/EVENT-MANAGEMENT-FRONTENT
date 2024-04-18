@@ -8,7 +8,7 @@ export default {
     extend: {
       colors:{
         cusBlue:'#F8E8EE',
-        cusOrange:'#D82C34',
+        cusOrange:'#D82C25',
         cusGreen:'#243d38'
       },
       boxShadow: {
