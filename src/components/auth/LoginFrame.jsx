@@ -1,68 +1,100 @@
-import { Link } from "react-router-dom"
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Link } from "react-router-dom";
+import EyePassword from "../shared/EyePassword";
+import { useState } from "react";
 
 const LoginFrame = () => {
+  //Regex for email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //Formdata for login
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState("");
+
+  //Function for saving usseer datas in state
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      const { email, password } = form;
+      if (!email || !password) {
+        setError("Please fill all fields");
+      } else if (!emailRegex.test(email)) {
+        setError("Invalid email format");
+      } else if (password.length < 8) {
+        setError("Password should contain more than 8");
+      } else {
+      }
+    } catch (error) {
+      console.log("Error in login handle submit", error);
+    }
+  };
+
+  if (error) setTimeout(() => setError(""), 2000);
+
   return (
     <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[520px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Login</h3>
       <form
-          className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-9 gap-4 flex-1"
-        >
-          <div className="w-full h-auto flex flex-col mt-8 gap-2">
-            <label
-              htmlFor="email"
-              className='font-roboto text-[gray] text-[.75rem]'
-            >
+        onSubmit={handleSubmit}
+        className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-9 gap-4 flex-1"
+      >
+        <div className="w-full h-auto flex flex-col mt-8 gap-2">
+          <label
+            htmlFor="email"
+            className="font-roboto text-[gray] text-[.75rem]"
+          >
             Email
-            </label>
-            <input
-              spellCheck={false}
-              type="text"
-              name="email"
-              className="h-[2.5rem] border outline-none px-3 text-[.9rem] border-[#39393948] drop-shadow-sm"
-            />
-            <label
-              htmlFor="email"
-              className='font-roboto  text-[gray] text-[.75rem]'
-            >
-              Password
-            </label>
-            <div className="h-[2.5rem] relative border outline-none  text-[.9rem] border-[#39393948] drop-shadow-sm">
-            <input
-              type="password"
-              name="password"
-              maxLength={16}
-              className="h-full w-full border-none outline-none px-3 text-[.9rem] border-[#39393948] drop-shadow-sm"
-            />
-            <span className="absolute right-2 top-2"><VisibilityIcon sx={{opacity:'.7' , fontSize:'1.15rem' , cursor:'pointer'}} /></span>
-            </div>
-            <Link
-              to="/forget-password"
-              className="text-[.72rem] text-blue-800 text-end mt-1 mr-1 font-roboto"
-            >
-              Forget Password ?
-            </Link>
-          </div>
-          <p className="text-[.8rem] text-[gray] font-sans mt-2">
-            Dont Have an account ? 
-            <Link to="/signup" className="text-blue-800 pl-1">
-               Signup.
-            </Link>
-          </p>
-          <p
-            className='text-center text- text-[.9rem] text-red-600'
+          </label>
+          <input
+            onChange={handleChange}
+            spellCheck={false}
+            value={form.email}
+            type="text"
+            name="email"
+            className="h-[2.5rem] border outline-none px-3 text-[.9rem] border-[#39393948] drop-shadow-sm"
+          />
+          <label
+            htmlFor="email"
+            className="font-roboto  text-[gray] text-[.75rem]"
           >
-            Incorrect password
-          </p>
-          <button
-            type="submit"
-            className="w-full py-2 mt-4 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+            Password
+          </label>
+          <EyePassword
+            handleChange={handleChange}
+            name={"password"}
+            value={form.password}
+          />
+          <Link
+            to="/forget-password"
+            className="text-[.72rem] text-blue-800 text-end mt-1 mr-1 font-roboto"
           >
-            Login
-          </button>
-        </form>
+            Forget Password ?
+          </Link>
+        </div>
+        <p className="text-[.8rem] text-[gray] font-sans mt-2">
+          Dont Have an account ?
+          <Link to="/signup" className="text-blue-800 pl-1">
+            Signup.
+          </Link>
+        </p>
+        <p className="text-center text- text-[.9rem] text-red-600">{error}</p>
+        <button
+          type="submit"
+          className="w-full py-2 mt-4 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+        >
+          Login
+        </button>
+      </form>
     </div>
-  ) 
-}
+  );
+};
 
-export default LoginFrame
+export default LoginFrame;

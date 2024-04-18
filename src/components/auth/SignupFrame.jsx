@@ -4,9 +4,8 @@ import EyePassword from "../shared/EyePassword";
 import { useState } from "react";
 
 function SignupFrame() {
-  //Regex for email
+  //Regex for email and for password
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //Regex for password
   const passwordRegex =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -135,7 +134,7 @@ function SignupFrame() {
     }
   };
 
-  error && setTimeout(() => setError(""), 2000);
+  if (error) setTimeout(() => setError(""), 2000);
 
   return (
     <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[620px] rounded-md box_shadow_black">
