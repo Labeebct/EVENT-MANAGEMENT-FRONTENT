@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import EyePassword from "../shared/EyePassword";
@@ -5,6 +6,7 @@ import axiosinstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const LoginFrame = () => {
+
   //Regex for email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -87,7 +89,7 @@ const LoginFrame = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[510px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] bg-white  flex flex-col items-center translate-y-5 h-[510px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Login</h3>
       <form
         onSubmit={handleSubmit}
@@ -128,7 +130,7 @@ const LoginFrame = () => {
         </div>
         <p className="text-[.8rem] text-[gray] font-sans mt-2">
           Dont Have an account ?
-          <Link to="/signup" className="text-blue-800 pl-1">
+          <Link to="/admin/signup" className="text-blue-800 pl-1">
             Signup.
           </Link>
         </p>
@@ -144,6 +146,6 @@ const LoginFrame = () => {
       </form>
     </div>
   );
-};
+}
 
-export default LoginFrame;
+export default LoginFrame

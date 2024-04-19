@@ -14,6 +14,7 @@ const EyePassword = ({ handleChange, handleBlur, value, name }) => {
         onBlur={handleBlur}
         value={value}
         type={!visible ? "password" : "text"}
+        placeholder={name == "secretpassword" && "XXXX XXXX XXXX"}
         name={name}
         maxLength={16}
         className="h-full w-full border-none outline-none px-3 text-[.9rem] border-[#39393948] drop-shadow-sm"
