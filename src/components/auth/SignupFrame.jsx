@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
 import EyePassword from "../shared/EyePassword";
 import { useState } from "react";
+import BasicAlert from "../shared/BasicAlert";
 
 function SignupFrame() {
   //Regex for email and for password
@@ -137,7 +138,7 @@ function SignupFrame() {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[620px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[590px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Signup</h3>
       <form
         onSubmit={handleSubmit}
@@ -215,16 +216,18 @@ function SignupFrame() {
             Login.
           </Link>
         </p>
-        <p
-          className={`${
-            success ? "text-green-600" : "text-red-500"
-          } text-center mt-5`}
-        >
-          {error}
-        </p>
+        {error && (
+          <BasicAlert type={success ? "success" : "error"} msg={error} />
+        )}
+        {!error && (
+          <p className="text-center text-[.7rem] font-roboto opacity-70">
+            Password should contain minimum 8 character with one capital letter,
+            one number and a special character
+          </p>
+        )}
         <button
           type="submit"
-          className="w-full py-2 mt-4 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+          className="w-full py-2 mt-2 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
         >
           Signup
         </button>

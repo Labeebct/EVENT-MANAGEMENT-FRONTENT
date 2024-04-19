@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
+import BasicAlert from "../shared/BasicAlert";
 
 const OtpFrame = () => {
   const navigate = useNavigate();
@@ -35,10 +36,10 @@ const OtpFrame = () => {
     }
   };
 
-  let api =
-    verifyType === "signup"
-      ? `/otp-verification/${email}`
-      : `/forget-otp-verification/${email}`;
+  let api;
+  if (verifyType === "signup") api = `/otp-verification/${email}`;
+  else if (verifyType === "login") api = `/forget-otp-verification/${email}`;
+  else api = `/forget-otp-verification/${email}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,10 +57,14 @@ const OtpFrame = () => {
             //Setting success message after and redirecting to login page after verification success
             setMessage(data.msg);
             setVerified(true);
-            verifyType == "signup"
-              ? setTimeout(() => navigate("/login"), 800)
-              : setTimeout(() => navigate(`/reset-password?email=${data.email}`), 800);
-            }
+            if (verifyType == "signup")
+              setTimeout(() => navigate("/login"), 800);
+            else
+              setTimeout(
+                () => navigate(`/reset-password?email=${data.email}`),
+                800
+              );
+          }
         } catch (error) {
           if (error.response) {
             const { data, status } = error.response;
@@ -87,13 +92,13 @@ const OtpFrame = () => {
     }
   };
 
-  message && setTimeout(() => setMessage(""), 1000);
+  if (message) setTimeout(() => setMessage(""), 2000);
 
   return (
-    <div className="w-[35%] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[520px] rounded-md box_shadow_black">
+    <div className="w-[35%] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[500px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">OTP</h3>
       <h4 className="text-[1.2rem] font-roboto mt-1">Verification</h4>
-      <form className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-9 gap-4 flex-1">
+      <form className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-5 gap-4 flex-1">
         <h3 className="text-center font-poppins text-[.9em] mt-5">
           Enter the Four Digit OTP send to the email <br />
           {email}
@@ -103,7 +108,7 @@ const OtpFrame = () => {
             <input
               ref={(el) => (inputsRef.current[index] = el)}
               key={index}
-              className="h-16 w-14 rounded-md border border-[#464646cb] outline-none text-center text-[1.9rem] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="h-16 w-14 mb-4 rounded-md border border-[#464646cb] outline-none text-center text-[1.9rem] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               type="text"
               maxLength={1}
               onChange={(e) => handleInput(index, e)}
@@ -112,18 +117,12 @@ const OtpFrame = () => {
           ))}
         </div>
         {message && (
-          <p
-            className={`${
-              verified ? "text-green-600" : "text-red-500"
-            } text-center mt-5`}
-          >
-            {message}
-          </p>
+          <BasicAlert type={verified ? "success" : "error"} msg={message} />
         )}
         <button
           type="submit"
           onClick={handleSubmit}
-          className="w-full py-2 mt-6 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+          className="w-full py-2 mt-4 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
         >
           Submit
         </button>

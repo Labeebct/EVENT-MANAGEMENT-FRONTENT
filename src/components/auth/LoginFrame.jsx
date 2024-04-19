@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import EyePassword from "../shared/EyePassword";
 import axiosinstance from "../../instance/axiosInstance";
 import { useState } from "react";
+import BasicAlert from "../shared/BasicAlert";
 
 const LoginFrame = () => {
   //Regex for email
@@ -86,7 +87,7 @@ const LoginFrame = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[520px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[510px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Login</h3>
       <form
         onSubmit={handleSubmit}
@@ -131,16 +132,12 @@ const LoginFrame = () => {
             Signup.
           </Link>
         </p>
-        <p
-          className={`${
-            loginSuccess ? "text-green-600" : "text-red-500"
-          } text-center mt-5`}
-        >
-          {error}
-        </p>
+        {error && (
+          <BasicAlert type={loginSuccess ? "success" : "error"} msg={error} />
+        )}
         <button
           type="submit"
-          className="w-full py-2 mt-4 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+          className="w-full py-2 mt-2 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
         >
           Login
         </button>
