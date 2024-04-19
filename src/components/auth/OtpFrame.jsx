@@ -14,10 +14,29 @@ const OtpFrame = () => {
   const [message, setMessage] = useState("");
   const [verified, setVerified] = useState(false);
 
+  const [resend, setResend] = useState(false);
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
     // Focus the first input when component mounts
     inputsRef.current[0]?.focus();
+    setCount(59);
   }, []);
+
+  useEffect(() => {
+    let intervalId = setInterval(() => {
+      if (count === 0) {
+        clearInterval(intervalId);
+        setResend(true);
+      } else {
+        setCount(count - 1);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [count]);
 
   const handleInput = (index, e) => {
     const value = e.target.value;
@@ -40,6 +59,16 @@ const OtpFrame = () => {
   if (verifyType === "signup") api = `/otp-verification/${email}`;
   else if (verifyType === "login") api = `/forget-otp-verification/${email}`;
   else api = `/forget-otp-verification/${email}`;
+
+  const handleResend = async () => {
+    try {
+      setResend(false);
+      setCount(59);
+      await axiosInstance.get(`/resend-otp?email=${email}&type=${verifyType}`);
+    } catch (error) {
+      console.log("Error in handle resend otp", error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -116,6 +145,19 @@ const OtpFrame = () => {
             />
           ))}
         </div>
+        {resend ? (
+          <button
+            onClick={handleResend}
+            className="py-2 active:scale-[.97] px-3 cursor-pointer text-[.9rem] rounded-sm duration-200 ease-in-out  bg-slate-500 text-white"
+          >
+            Resend otp
+          </button>
+        ) : (
+          <span className="text-[.9rem] flex items-center font-roboto">
+            Resend otp in{" "}
+            <p className="text-[1rem] pl-1 font-poppins pb-[.1rem]">{count}</p>
+          </span>
+        )}
         {message && (
           <BasicAlert type={verified ? "success" : "error"} msg={message} />
         )}

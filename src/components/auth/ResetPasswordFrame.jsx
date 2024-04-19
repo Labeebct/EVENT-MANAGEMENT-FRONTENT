@@ -9,13 +9,13 @@ const ResetPasswordFrame = () => {
     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const Navigate = useNavigate();
-  const location = useLocation()
-  const [email , setEmail ] = useState('')
-  
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search)
-    setEmail(queryParams.get('email'))
-  },[location.search])
+    const queryParams = new URLSearchParams(location.search);
+    setEmail(queryParams.get("email"));
+  }, [location.search]);
 
   const [error, setError] = useState("");
   const [succes, setSuccess] = useState(false);
@@ -57,7 +57,7 @@ const ResetPasswordFrame = () => {
         //Redrecting to Login page after successfull password reset
         if (status == 200) {
           setError(data.msg);
-          setSuccess(true)
+          setSuccess(true);
           setTimeout(() => Navigate("/login"), 800);
         }
       } catch (error) {
@@ -87,7 +87,7 @@ const ResetPasswordFrame = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[550px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[560px] rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Reset password</h3>
       <form
         onSubmit={handleSubmit}
@@ -128,7 +128,7 @@ const ResetPasswordFrame = () => {
             value={form.confirmPassword}
           />
         </div>
-        <p className="text-center text-[.7rem] mb-2 font-roboto opacity-70">
+        <p className="text-center mt-1 text-[.7rem] mb-2 font-roboto opacity-70">
           Password should contain minimum 8 character with one capital letter,
           one number and a special character
         </p>
