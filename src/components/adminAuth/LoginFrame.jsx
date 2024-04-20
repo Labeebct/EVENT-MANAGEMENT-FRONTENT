@@ -117,7 +117,7 @@ const LoginFrame = () => {
             value={form.password}
           />
           <Link
-            to="/forget-password"
+            to="/admin/forget-password"
             className="text-[.72rem] text-blue-800 text-end mt-1 mr-1 font-roboto"
           >
             Forget Password ?

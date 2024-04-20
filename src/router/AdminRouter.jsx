@@ -11,12 +11,16 @@ import AdminLayout from "../layout/AdminLayout";
 import Bookings from "../pages/admin/Bookings";
 import Messages from "../pages/admin/Messages";
 import Agents from "../pages/admin/Agents";
+import ForgetPassword from "../pages/adminAuth/ForgetPassword";
+import ResetPassword from "../pages/adminAuth/ResetPassword";
 
 const AdminRouter = () => {
   return (
     <Routes>
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
 
       <Route path="/" element={<AdminLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />

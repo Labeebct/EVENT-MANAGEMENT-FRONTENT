@@ -28,7 +28,7 @@ const SideBar = ({ role }) => {
           </li>
         </ul>
       ) : (
-        <p className="font-roboto translate-y-44 font-light text-[.78rem] text-[white] my-2 ">Sponsored by labio, the Innovative future</p>
+        <p className="font-roboto translate-y-44 font-light text-[.78rem] text-[white] my-2 ">Sponsored by Labio, the Innovative future</p>
       )
     }
     </div>
