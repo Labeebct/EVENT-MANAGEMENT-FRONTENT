@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import LogoutIcon from "@mui/icons-material/Logout";
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -10,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import ChatIcon from '@mui/icons-material/Chat';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 function LeftBar() {
 
@@ -38,6 +39,9 @@ function LeftBar() {
         break;
       case "/admin/messages":
         setPage("Messages");
+        break;
+      case "/admin/agents":
+        setPage("Agents");
         break;
       default:
         setPage("");
@@ -107,6 +111,16 @@ function LeftBar() {
             Bookings
           </li>
         </Link>
+        <Link to="/admin/agents">
+          <li
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
+              page === "Agents" ? "bg-[#c0bebe2f]" : ""
+            }  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
+          >
+            <HandshakeIcon sx={{ fontSize: 20 }} />
+            Agents
+          </li>
+        </Link>
         <Link to="/admin/users">
           <li
             className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center ${
@@ -127,11 +141,11 @@ function LeftBar() {
             Messages
           </li>
         </Link>
-        <Link to="/admin/login">
+        <Link to="/admin/login" className="mt-32">
           <li
-            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-3 gap-4 items-center  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
+            className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-2 gap-4 items-center  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >
-            <LogoutIcon sx={{ fontSize: 20 }} />
+            <PowerSettingsNewIcon sx={{ fontSize: 21 }} />
             Logout
           </li>
         </Link>

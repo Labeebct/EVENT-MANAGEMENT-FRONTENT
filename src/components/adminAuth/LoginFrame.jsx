@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import EyePassword from "../shared/EyePassword";
@@ -6,7 +6,6 @@ import axiosinstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const LoginFrame = () => {
-
   //Regex for email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -40,7 +39,7 @@ const LoginFrame = () => {
       } else {
         try {
           //Sending request to backend
-          const response = await axiosinstance.post("/login", {
+          const response = await axiosinstance.post("/admin/login", {
             email,
             password,
           });
@@ -50,7 +49,7 @@ const LoginFrame = () => {
             setError(data.msg);
             setLoginSuccess(true);
             localStorage.setItem("token", data.token);
-            setTimeout(() => Navigate("/"), 300);
+            setTimeout(() => Navigate("/admin/dashboard"), 300);
           }
         } catch (error) {
           if (error.response) {
@@ -66,10 +65,6 @@ const LoginFrame = () => {
             } else if (status === 403) {
               //if user exist and not verified
               setError(data.msg);
-              setTimeout(
-                () => Navigate(`/verify-otp/signup/${data.email}`),
-                800
-              );
             } else if (status == 500) {
               //If any malfunction occurs
               Navigate("/500");
@@ -146,6 +141,6 @@ const LoginFrame = () => {
       </form>
     </div>
   );
-}
+};
 
-export default LoginFrame
+export default LoginFrame;
