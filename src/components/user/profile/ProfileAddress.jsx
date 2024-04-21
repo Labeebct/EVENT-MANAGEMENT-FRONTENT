@@ -6,7 +6,7 @@ function ProfileAddress() {
       <div className="flex mt-5 justify-between">
         <span className="flex w-[49.5%] flex-col gap-2">
           <label htmlFor="" className="text-[.75rem] font-inter opacity-90">
-            First Name
+            Occupation
           </label>
           <input
             spellCheck={false}
@@ -17,39 +17,21 @@ function ProfileAddress() {
         </span>
         <span className="flex w-[49.5%] flex-col gap-2">
           <label htmlFor="" className="text-[.75rem] font-inter opacity-90">
-            Last Name
-          </label>
-          <input
-            spellCheck={false}
-            className="h-[2.4rem] w-full shadow-md border outline-none px-4 text-[.9rem]"
-            type="text"
-            name="lastname"
-          />
-        </span>
-      </div>
-      <div className="flex mt-5 justify-between">
-        <span className="flex w-[52.5%] flex-col gap-2">
-          <label htmlFor="" className="text-[.75rem] font-inter opacity-90">
-            Email
-          </label>
-          <input
-            spellCheck={false}
-            className="h-[2.4rem] w-full shadow-md border outline-none px-4 text-[.9rem]"
-            type="text"
-            name="email"
-          />
-        </span>
-        <span className="flex w-[46.5%] flex-col gap-2">
-          <label htmlFor="" className="text-[.75rem] font-inter opacity-90">
             Mobile Number
           </label>
-          <input
-            spellCheck={false}
-            className="h-[2.4rem] w-full shadow-md border outline-none px-4 text-[.9rem] [appearance:textfield]
-             [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            type="number"
-            name="mobilenum"
-          />
+          <select
+            className="h-[2.4rem] w-full shadow-md border outline-none px-4 text-[.9rem]"
+            name=""
+            id=""
+          >
+            <option value="">Referral Source</option>
+            <option value="">Online advertising</option>
+            <option value="">Social media</option>
+            <option value="">Search engine</option>
+            <option value="">Referral from a friend or family member</option>
+            <option value="">Website/blog</option>
+            <option value="">Print advertisement</option>
+          </select>
         </span>
       </div>
       <div className="flex mt-5 justify-between">
@@ -123,7 +105,7 @@ function ProfileAddress() {
           />
         </span>
       </div>
-      <button className="bg-cusOrange font-inter my-10 ease-in-out duration-200 active:scale-[.95] text-white shadow-box m-auto text-center p-2 w-full">
+      <button className="bg-cusOrange font-inter my-10 ease-in-out duration-200 active:scale-[.99] text-white shadow-box m-auto text-center p-2 w-full">
         SUBMIT
       </button>
     </form>

@@ -15,6 +15,7 @@ import PageNotFoundContent from "../components/shared/404Content";
 import InternalServerError from "../pages/shared/500";
 import Profile from "../pages/user/Profile";
 import EventDetails from "../pages/user/EventDetails";
+import CompleteProfile from "../pages/shared/CompleteProfile";
 
 const UserRoute = () => {
   return (
@@ -24,6 +25,7 @@ const UserRoute = () => {
       <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/complete-profile" element={<CompleteProfile />} />
       
       <Route path="/" element={<UserLayout />}>
         <Route path="/" element={<Home />} />

@@ -13,6 +13,7 @@ import Messages from "../pages/admin/Messages";
 import Agents from "../pages/admin/Agents";
 import ForgetPassword from "../pages/adminAuth/ForgetPassword";
 import ResetPassword from "../pages/adminAuth/ResetPassword";
+import CompleteProfile from "../pages/shared/CompleteProfile";
 
 const AdminRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AdminRouter = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/complete-profile" element={<CompleteProfile />} />
 
       <Route path="/" element={<AdminLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
