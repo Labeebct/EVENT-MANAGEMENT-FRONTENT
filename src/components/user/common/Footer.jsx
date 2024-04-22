@@ -4,11 +4,11 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import XIcon from "@mui/icons-material/X";
 
-const Footer = () => {
+const Footer = ({role}) => {
   return (
-    <div className="w-full h-auto flex md:flex-row flex-col  p-10 bg-cusBlue">
+    <div className={`w-full h-auto flex md:flex-row flex-col  p-10 ${role === 'user' ? 'bg-cusBlue' : 'bg-[#e2d8ce]'}`}>
       <div className="w-[30%] min-w-[230px] h-full mx-auto flex flex-col flex-1 md:items-start items-center justify-center">
-        <h1 className="font-[600] text-[2rem] text-cusOrange font-serif tracking-[.4rem]">
+        <h1 className={`font-[600] text-[2rem] ${role == 'admin' ? 'text=[#ff450a]' : 'text-cusOrange'}  font-serif tracking-[.4rem]`}>
           LABIO
         </h1>
         <h3 className="font-cagliostro text-gray-600 text-center md:text-start">

@@ -7,7 +7,7 @@ const UserLayout = () => {
     <>
       <Header />
       <Outlet/>
-      <Footer/>
+      <Footer role={'user'} />
     </>
   );
 };

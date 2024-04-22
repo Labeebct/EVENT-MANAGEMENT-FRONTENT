@@ -8,7 +8,7 @@ const CompleteProfileContent = () => {
   const location = useLocation();
 
   const email = "ctlabeebthaliyil@gmail.com";
-  const role = "admin";
+  const role = "user";
 
   const api =
     location.pathname === "/admin/complete-profile"
@@ -149,7 +149,7 @@ const CompleteProfileContent = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="bg-white w-[80%] h-[90%] shadow-box rounded-md">
+    <div className="bg-white w-[80%] min-h-[90%] h-auto shadow-box rounded-md">
       <form action="" onSubmit={handleSubmit}>
         <div className="w-full h-52 flex">
           <div className="h-full flex-1 flex flex-col gap-3 pt-5 pl-12 pr-2">
@@ -345,7 +345,7 @@ const CompleteProfileContent = () => {
                 />
               </span>
             </div>
-            <div className="flex mt-5 justify-between">
+            <div className="flex mt-5 mb-7 justify-between">
               <span className="flex w-[33.5%] flex-col gap-2">
                 <label
                   htmlFor=""
@@ -401,7 +401,7 @@ const CompleteProfileContent = () => {
                 <BasicAlert type={success ? "success" : "error"} msg={error} />
               )}
             </div>
-            <button className="bg-cusOrange font-inter my-3 ease-in-out duration-200 active:scale-[.99] text-white shadow-box m-auto text-center p-2 w-full">
+            <button className={`bg-cusOrange font-inter  mt-3 ease-in-out duration-200 active:scale-[.99] text-white shadow-box m-auto text-center p-2 w-full`}>
               SUBMIT
             </button>
           </div>

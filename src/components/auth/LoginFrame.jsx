@@ -87,7 +87,7 @@ const LoginFrame = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[510px] rounded-md box_shadow_black">
+    <div className="w-[35%] duration-100 ease-linear mb-4 min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-auto rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Login</h3>
       <form
         onSubmit={handleSubmit}

@@ -124,7 +124,7 @@ const OtpFrame = () => {
   if (message) setTimeout(() => setMessage(""), 2000);
 
   return (
-    <div className="w-[35%] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[500px] rounded-md box_shadow_black">
+    <div className="w-[35%] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-auto pb-4 rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">OTP</h3>
       <h4 className="text-[1.2rem] font-roboto mt-1">Verification</h4>
       <form className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-5 gap-4 flex-1">

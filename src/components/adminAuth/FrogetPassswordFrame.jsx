@@ -55,7 +55,7 @@ const FrogetPassswordFrame = () => {
   if (message) setTimeout(() => setMessage(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] bg-white flex flex-col items-center translate-y-5 h-[540px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] bg-white flex flex-col items-center translate-y-5 h-auto rounded-md box_shadow_black">
       <h3 className="text-[1.7rem] font-playfair mt-9">Forget password</h3>
       <h3 className="mt-7 font-roboto opacity-85 text-[.9rem] text-center px-10">
         Entered your registered email address and the secret key to reset the password.

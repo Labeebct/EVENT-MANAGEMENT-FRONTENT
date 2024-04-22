@@ -18,6 +18,7 @@ function SignupFrame() {
     email: "",
     password: "",
     confirmpassword: "",
+    role: "user",
   });
 
   const [labelError, setLabelError] = useState({
@@ -138,13 +139,13 @@ function SignupFrame() {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-[590px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] mb-5 backdrop-blur-[.1rem]  bg-[#ffffff96]  flex flex-col items-center translate-y-5 h-auto rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Signup</h3>
       <form
         onSubmit={handleSubmit}
-        className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-4 gap-4 flex-1"
+        className="w-full text-black h-full flex  flex-col items-center  px-[2rem] py-2 gap-4 flex-1"
       >
-        <div className="w-full h-auto flex flex-col mt-8 gap-2">
+        <div className="w-full h-auto flex flex-col mt-6 gap-2">
           <label
             htmlFor="email"
             className={`font-roboto ${
@@ -210,7 +211,42 @@ function SignupFrame() {
             value={form.confirmpassword}
           />
         </div>
-        <p className="text-[.8rem] text-[gray] font-sans mt-2">
+        <div className="w-full flex gap-2 items-center">
+          <span className="flex gap-1 items-center">
+            <input
+              id="user"
+              type="radio"
+              defaultChecked
+              className="cursor-pointer"
+              onChange={handleChange}
+              name="role"
+              value={"user"}
+            />
+            <label
+              className="text-[.7rem] font-medium font-inter cursor-pointer"
+              htmlFor="user"
+            >
+              User
+            </label>
+          </span>
+          <span className="flex gap-1 items-center">
+            <input
+              id="agent"
+              type="radio"
+              className="cursor-pointer"
+              onChange={handleChange}
+              name="role"
+              value={"agent"}
+            />
+            <label
+              className="text-[.7rem] font-medium font-inter cursor-pointer"
+              htmlFor="agent"
+            >
+              Agent
+            </label>
+          </span>
+        </div>
+        <p className="text-[.8rem] text-[gray] font-sans mt-1">
           Already Have an account ?
           <Link to="/login" className="text-blue-800 pl-1">
             Login.
@@ -227,7 +263,7 @@ function SignupFrame() {
         )}
         <button
           type="submit"
-          className="w-full py-2 mt-2 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
+          className="w-full py-2 mt-1 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"
         >
           Signup
         </button>

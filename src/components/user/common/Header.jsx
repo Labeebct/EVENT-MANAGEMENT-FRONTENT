@@ -54,7 +54,7 @@ const Header = () => {
             <Link to={"/"}>
               <li
               onClick={() => setPage('Home')}
-               className={`px-2 py-6 hover:-translate-y-1 ease-out duration-200 cursor-pointer ${page === 'Home' && 'text-cusOrange font-bold'} font-roboto flex items-center tracking-wide`}>
+               className={`px-2 py-6 hover:-translate-y-[.15rem] ease-out duration-200 cursor-pointer ${page === 'Home' && 'text-cusOrange font-semibold'} font-roboto flex items-center tracking-wide`}>
                 <span className="hidden md:block">Home</span>
                 <span className="block md:hidden">
                   <HomeIcon sx={{ fontSize: "1.3rem", opacity: ".87" }} />
@@ -64,7 +64,7 @@ const Header = () => {
             <Link to={"/events"}>
               <li
               onClick={() => setPage('Events')}
-               className={`px-2 py-6 hover:-translate-y-1 ease-out duration-200 cursor-pointer ${page === 'Events' && 'text-cusOrange font-bold'} font-roboto flex items-center tracking-wide`}>
+               className={`px-2 py-6 hover:-translate-y-[.15rem] ease-out duration-200 cursor-pointer ${page === 'Events' && 'text-cusOrange font-semibold'} font-roboto flex items-center tracking-wide`}>
                 <span className="hidden md:block">Events</span>
                 <span className="block md:hidden">
                   <CalendarMonthIcon
@@ -76,7 +76,7 @@ const Header = () => {
             <Link to={"/category"}>
               <li
               onClick={() => setPage('Category')}
-               className={`px-2 py-6 hover:-translate-y-1 ease-out duration-200 cursor-pointer ${page === 'Category' && 'text-cusOrange font-bold'} font-roboto flex items-center tracking-wide`}>
+               className={`px-2 py-6 hover:-translate-y-[.15rem] ease-out duration-200 cursor-pointer ${page === 'Category' && 'text-cusOrange font-semibold'} font-roboto flex items-center tracking-wide`}>
                 <span className="hidden md:block">Category</span>
                 <span className="block md:hidden">
                   <LeaderboardIcon
@@ -88,7 +88,7 @@ const Header = () => {
             <Link to={"/about"}>
               <li
               onClick={() => setPage('About')}
-               className={`px-2 py-6 hover:-translate-y-1 ease-out duration-200 cursor-pointer ${page === 'About' && 'text-cusOrange font-bold'} font-roboto flex items-center tracking-wide`}>
+               className={`px-2 py-6 hover:-translate-y-[.15rem] ease-out duration-200 cursor-pointer ${page === 'About' && 'text-cusOrange font-semibold'} font-roboto flex items-center tracking-wide`}>
                 <span className="hidden md:block">About us</span>
                 <span className="block md:hidden">
                   <InfoIcon sx={{ fontSize: "1.24rem", opacity: ".87" }} />
@@ -98,7 +98,7 @@ const Header = () => {
             <Link to={"/contact"}>
               <li
               onClick={() => setPage('Contact')}
-               className={`px-2 py-6 hover:-translate-y-1 ease-out duration-200 cursor-pointer ${page === 'Contact' && 'text-cusOrange font-bold'} font-roboto flex items-center tracking-wide`}>
+               className={`px-2 py-6 hover:-translate-y-[.15rem] ease-out duration-200 cursor-pointer ${page === 'Contact' && 'text-cusOrange font-semibold'} font-roboto flex items-center tracking-wide`}>
                 <span className="hidden md:block">Contact</span>
                 <span className="block md:hidden">
                   <PhoneIcon sx={{ fontSize: "1.3rem", opacity: ".87" }} />
@@ -109,7 +109,7 @@ const Header = () => {
         </div>
         <div className="flex-4 gap-4 flex items-center">
           <Link to={"/profile"}>
-            <button className={`duration-100 ${page === 'Profile' && 'text-cusOrange font-bold'} ease-out active:scale-[.95]`}>
+            <button className={`duration-100 ${page === 'Profile' && 'text-cusOrange font-semibold'} ease-out active:scale-[.95]`}>
               <PersonIcon sx={{ fontSize: "1.65rem", opacity: ".8" }} />
             </button>
           </Link>
@@ -124,27 +124,27 @@ const Header = () => {
       <div className="w-full sm:hidden flex items-center justify-center overflow-hidden">
         <ul className="flex w-full items-center justify-center gap-1 z-30 bg-white text-[#000000bd]">
           <Link to={"/"}>
-            <li className={`px-2 py-4 hover:-translate-y-1 ease-out duration-200 ${page === 'Home' && 'text-cusOrange font-bold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
+            <li className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${page === 'Home' && 'text-cusOrange font-semibold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
               Home
             </li>
           </Link>
           <Link to={"/events"}>
-            <li className={`px-2 py-4 hover:-translate-y-1 ease-out duration-200 ${page === 'Events' && 'text-cusOrange font-bold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
+            <li className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${page === 'Events' && 'text-cusOrange font-semibold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
               Events
             </li>
           </Link>
           <Link to={"/category"}>
-            <li className={`px-2 py-4 hover:-translate-y-1 ease-out duration-200 ${page === 'Category' && 'text-cusOrange font-bold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
+            <li className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${page === 'Category' && 'text-cusOrange font-semibold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
               Category
             </li>
           </Link>
           <Link to={"/about"}>
-            <li className={`px-2 py-4 hover:-translate-y-1 ease-out duration-200 ${page === 'About' && 'text-cusOrange font-bold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
+            <li className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${page === 'About' && 'text-cusOrange font-semibold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
               About
             </li>
           </Link>
           <Link to={"/contact"}>
-            <li className={`px-2 py-4 hover:-translate-y-1 ease-out duration-200 ${page === 'Contact' && 'text-cusOrange font-bold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
+            <li className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${page === 'Contact' && 'text-cusOrange font-semibold'} cursor-pointer font-roboto flex items-center tracking-wide`}>
               Contact
             </li>
           </Link>

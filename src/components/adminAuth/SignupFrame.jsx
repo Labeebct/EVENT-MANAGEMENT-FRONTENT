@@ -126,7 +126,7 @@ function SignupFrame() {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="w-[35%] min-w-[290px] mb-4 bg-white flex flex-col items-center translate-y-5 h-[600px] rounded-md box_shadow_black">
+    <div className="w-[35%] min-w-[290px] mb-4 bg-white flex flex-col items-center translate-y-5 h-auto pb-3 rounded-md box_shadow_black">
       <h3 className="text-[2rem] font-playfair mt-7">Signup</h3>
       <form
         onSubmit={handleSubmit}

@@ -11,6 +11,12 @@
     background-repeat: no-repeat;
     background-size:cover;
 }
+.agent_home_bg{
+    background-image: url('./assets/handshake (3).jpg');
+    background-position:bottom;
+    background-repeat: no-repeat;
+    background-size:cover
+}
 .contact_bg{
     background-image: url('./assets/bg (4).jpg');
     background-position: bottom;
