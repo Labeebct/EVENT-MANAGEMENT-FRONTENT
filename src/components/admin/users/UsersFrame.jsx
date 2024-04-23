@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { useAlert } from "../../../context/CenterAlert";
 import axiosInstance from "../../../instance/axiosInstance";
 import LabioImg from "../../../assets/labio.png";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
+
 const UsersFrame = ({ data }) => {
+  const showAlert = useAlert();
+
   const [down, setDown] = useState(false);
-  const [block , setBlock] = useState(false)
-  const status = data.status == 'active' ? 'UNBLOCK' : 'BLOCK'
+  const [block, setBlock] = useState(data.status == "active" ? false : true);
+  const status = block ? "UNBLOCK" : "BLOCK";
   const Navigate = useNavigate();
 
   const handleBlock = () => {
     confirmAlert({
       title: `Confirm to ${status}`,
-      message: `Are you sure you want to ${status}?`,
+      message: `Are you sure you want to ${
+        status == "BLOCK" ? "block" : "unblock"
+      }?`,
       titleClassName: "text-xl font-inter font-bold text-green-500",
       buttons: [
         {
@@ -24,10 +30,16 @@ const UsersFrame = ({ data }) => {
           className: "text-white font-bold py-2 px-4 rounded mr-2",
           onClick: async () => {
             try {
-              const response = await axiosInstance.put("/admin/block");
-              const {data , status} = response
-              if(status == 200) {
-                setBlock(!block)
+              const response = await axiosInstance.put(
+                `/admin/block?id=${data._id}`
+              );
+              const { status } = response;
+              if (status == 200) {
+                setBlock(!block);
+                showAlert(
+                  "success",
+                  `Member has been ${block ? "Unblocked" : "Blocked"}`
+                );
               }
             } catch (error) {
               if (error.response) {
@@ -94,7 +106,7 @@ const UsersFrame = ({ data }) => {
               className="absolute cursor-pointer  bottom-3 right-4"
             />
           )}
-          {data.status == "active" || !block ? (
+          {!block ? (
             <button
               onClick={handleBlock}
               className="bg-green-700 font-[400] font-inter rounded-sm top-1 absolute right-1 duration-150 ease-out active:scale-[.95] text-white text-[.7rem] py-1 px-4"
