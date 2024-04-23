@@ -168,13 +168,13 @@ const Header = () => {
               Events
             </li>
           </Link>
-          <Link to={"/agent/my-booking"}>
+          <Link to={"/agent/my-bookings"}>
             <li
               className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${
                 page === "Booking" && "text-[#ff450a] font-bold"
               } cursor-pointer font-roboto flex items-center tracking-wide`}
             >
-              Category
+              Bookings
             </li>
           </Link>
           <Link to={"/agent/about"}>

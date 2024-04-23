@@ -1,8 +1,9 @@
 import React from 'react'
+import AddEventContent from '../../components/agent/addevents/AddEventContent'
 
 const AddEvents = () => {
   return (
-    <div>AddEvents</div>
+    <AddEventContent />
   )
 }
 

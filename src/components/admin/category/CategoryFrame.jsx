@@ -17,11 +17,11 @@ const CategoryFrame = () => {
         venue, decorations, food, and entertainment to ensure a great time for
         guests
       </p>
-      <div className="w-full h-auto flex justify-end pr-5-6 items-center ">
-        <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 rounded-[3rem] bg-green-600">
+      <div className="w-full h-auto flex justify-end  items-center ">
+        <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 rounded-sm bg-green-600">
           <EditIcon sx={{ fontSize: "20px" }} />
         </button>
-        <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out rounded-[3rem] bg-red-600">
+        <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out rounded-sm bg-red-600">
           <BlockIcon sx={{ fontSize: "20px" }} />
         </button>
       </div>

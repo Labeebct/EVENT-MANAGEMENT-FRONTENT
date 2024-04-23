@@ -6,9 +6,6 @@ import weddingImg from "../../../assets/bg (15).jpg";
 const EventsFrame = () => {
   return (
     <div className="filter relative items-center w-full bg-white flex shadow-box flex-1 h-auto">
-      <button className="p-1 px-4 drop-shadow-md shadow-sm opacity-90 absolute font-bold top-0 left-0 text-white text-[.7rem]  mr-3 rounded-sm bg-green-800">
-        ACTIVE
-      </button>
       <img
         src={weddingImg}
         className="md:w-60 w-44 sm:w-52 h-auto p-6 object-cover rounded-lg"
@@ -30,10 +27,10 @@ const EventsFrame = () => {
           </div>
         </div>
         <div className="w-full absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end pr-5-6 items-center ">
-          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 rounded-[3rem] bg-green-600">
+          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 bg-green-600">
             <EditIcon sx={{ fontSize: "19px" }} />
           </button>
-          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out rounded-[3rem] bg-red-600">
+          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out bg-red-600">
             <BlockIcon sx={{ fontSize: "19px" }} />
           </button>
         </div>

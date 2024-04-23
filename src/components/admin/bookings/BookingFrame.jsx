@@ -1,5 +1,6 @@
 import React from "react";
 import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
 import weddingImg from "../../../assets/bg (15).jpg";
 
 const BookingFrame = () => {
@@ -35,9 +36,14 @@ const BookingFrame = () => {
             Advance Paid: 500
           </div>
         </div>
-        <div className="w-full absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end items-center ">
-          <button className="p-2 sm:block hidden text-white text-[.9rem] duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-red-600">Cancell Event</button>
-          <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out rounded-[3rem] bg-red-600">
+        <div className="w-full gap-2 absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end items-center ">
+          <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">Approve</button>
+          {/* <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">Approved</button> */}
+          <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-red-700">Cancel</button>
+          <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-green-600">
+            <DoneIcon sx={{ fontSize: "19px" }} />
+          </button>
+          <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-red-600">
             <CloseIcon sx={{ fontSize: "19px" }} />
           </button>
         </div>

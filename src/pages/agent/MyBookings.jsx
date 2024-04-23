@@ -1,8 +1,9 @@
 import React from 'react'
+import BookingContent from '../../components/agent/mybookings/BookingContent'
 
 const MyBookings = () => {
   return (
-    <div>MyBookings</div>
+    <BookingContent />
   )
 }
 

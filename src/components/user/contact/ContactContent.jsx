@@ -1,8 +1,8 @@
 import ContactForm from './ContactForm'
 
-const ContactContent = () => {
+const ContactContent = ({role}) => {
   return (
-    <ContactForm />
+    <ContactForm role={role} />
   )
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const AddEventFrame = () => {
   return (
-    <form className="h-full bg-white py-6 px-12 w-full">
+    <form className="h-[90%] shadow-box py-6 px-12 w-[70%] bg-gray-50">
       <div className="flex mt-5 justify-between">
         <span className="flex w-[49.5%] flex-col gap-2">
           <label htmlFor="" className="text-[.75rem] font-inter opacity-90">

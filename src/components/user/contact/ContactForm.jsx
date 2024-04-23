@@ -2,10 +2,10 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import CallIcon from "@mui/icons-material/Call";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
-const ContactForm = () => {
+const ContactForm = ({ role }) => {
   return (
     <>
-      <div className="w-full h-auto flex justify-center items-center contact_bg">
+      <div className="w-full h-auto flex justify-center items-center contact_bg agent_contact_bg">
         <h3 className="text-[3.2rem] mb-10 text-[#ffffff] font-cagliostro">
           Contact us
         </h3>
@@ -33,7 +33,7 @@ const ContactForm = () => {
                 <label
                   htmlFor="email"
                   className="font-roboto  text-[#808080db] text-[.75rem]"
-                > 
+                >
                   Email
                 </label>
                 <div className="h-[2.5rem] border border-[#6c6c6c15] relative shadow-md outline-none  text-[.9rem]  bg-gray-50">
@@ -73,7 +73,9 @@ const ContactForm = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2 my-6 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 text-white cursor-pointer"
+                  className={`w-full py-2 my-6 font-roboto ${
+                    role === "user" ? "bg-cusOrange" : "bg-[#ff450a]"
+                  }  tracking-wider active:scale-[.96] ease-out duration-100 text-white cursor-pointer`}
                 >
                   Submit
                 </button>
@@ -93,7 +95,11 @@ const ContactForm = () => {
                   </p>
                 </div>
                 <div className="flex-1 flex justify-end pr-5 items-center">
-                  <button className="py-2 bg-cusOrange text-white font-bold w-[5rem] text-[.76rem] duration-150 active:scale-[.98] ease-in-out rounded-sm">
+                  <button
+                    className={`py-2 bg-cusOrange text-white font-bold w-[5rem] ${
+                      role === "user" ? "bg-cusOrange" : "bg-[#ff450a]"
+                    } text-[.76rem] duration-150 active:scale-[.98] ease-in-out rounded-sm`}
+                  >
                     Follow
                   </button>
                 </div>

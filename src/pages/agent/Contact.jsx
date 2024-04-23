@@ -3,7 +3,7 @@ import ContactContent from '../../components/user/contact/ContactContent'
 
 const Contact = () => {
   return (
-    <ContactContent />
+    <ContactContent role={'agent'} />
   )
 }
 
