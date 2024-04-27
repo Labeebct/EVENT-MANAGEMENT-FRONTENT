@@ -15,6 +15,7 @@ const ContactForm = ({ role }) => {
   const [success, setSuccess] = useState(false);
 
   if (error) setTimeout(() => setError(""), 2000);
+  if (success) setTimeout(() => setSuccess(false), 2000);
   return (
     <>
       <div className="w-full h-auto flex justify-center items-center contact_bg agent_contact_bg">
@@ -60,7 +61,10 @@ const ContactForm = ({ role }) => {
                       if (status == 200) {
                         setSuccess(true);
                         setError(data.msg);
-                        setTimeout(() => resetForm(), 2000);
+                        setTimeout(() => {
+                          resetForm() 
+                          Navigate('/')
+                        }, 2000);
                       }
                     } catch (error) {
                       if (error.response) {
