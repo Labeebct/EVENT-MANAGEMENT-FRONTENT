@@ -27,12 +27,12 @@ const MessageContent = () => {
     };
 
     fetchMessages();
-  }, [messages]);
+  }, []);
 
   if (messages.length == 0) {
     return (
       <div className="h-full w-full flex justify-center items-center">
-        <h3 className="text-[1.5rem] mb-24 font-semibold font-inter">
+        <h3 className="text-[1.3rem] mb-24 font-semibold font-inter">
           No messages Left
         </h3>
       </div>

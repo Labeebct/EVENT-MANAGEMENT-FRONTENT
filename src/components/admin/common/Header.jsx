@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import AddIcon from "@mui/icons-material/Add";
 
 const Header = () => {
@@ -36,11 +37,24 @@ const Header = () => {
       <h1 className="font-inter text-[1.1rem] font-semibold">{getTitle()}</h1>
       <div>
 
-        {getTitle() == "Category" && (
-          <button onClick={()=> Navigate('/admin/add-category')} className="p-2 bg-[#243d38] mr-8 font-inter text-[.8rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
-            Add Category <AddIcon sx={{ fontSize: "23px" }} />
+       
+        {getTitle() == "Messages" && (
+          <select className="w-32 outline-none border-none p-1 font-inter text-[.9rem]" name="sort_role" id="role">
+            <option className="text-[.8rem] cursor-pointer font-inter" value="all">All</option>
+            <option className="text-[.8rem] cursor-pointer font-inter" value="user">User</option>
+            <option className="text-[.8rem] cursor-pointer font-inter" value="agent">Agent</option>
+          </select>
+        )}
+         {getTitle() == "Category" && (
+          <button onClick={()=> Navigate('/admin/add-category')} className="p-2 bg-[#243d38] font-inter text-[.75rem] text-white duration-150 cursor-pointer active:scale-[.98] ease-in rounded-sm">
+            Add Category <AddIcon sx={{ fontSize: "19px" }} />
           </button>
         )}
+        <Link to={"/admin/messages"}>
+          <button className="duration-100 px-5 ease-out active:scale-[.95]">
+            <NotificationsIcon sx={{ fontSize: "1.58rem", opacity: ".8" }} />
+          </button>
+        </Link>
         <Link to={"/profile"}>
           <button className="duration-100 ease-out active:scale-[.95]">
             <PersonIcon sx={{ fontSize: "1.65rem", opacity: ".8" }} />
