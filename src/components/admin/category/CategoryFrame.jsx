@@ -94,7 +94,7 @@ const CategoryFrame = ({ data }) => {
       )}
 
       {isBlocked && (
-        <div className="absolute left-0 w-full h-full flex justify-center items-center backdrop-blur-[.06rem] bg-[#00000033]">
+        <div className="absolute left-0 w-full h-full flex justify-center items-center backdrop-blur-[.06rem] bg-[#ffffff33]">
           <button
             onClick={handleBlock}
             className="bg-red-600 mt-2 mb-32 cursor-pointer ease-linear duration-100 active:scale-[.95] py-2 px-5 font-bold text-white rounded-sm text-[.7rem] font-inter"
