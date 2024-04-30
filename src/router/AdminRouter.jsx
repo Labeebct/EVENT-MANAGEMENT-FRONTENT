@@ -31,7 +31,8 @@ const AdminRouter = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/messages" element={<Messages />} />
-        <Route path="/add-category" element={<AddCategory />} />
+        <Route path="/add-category" element={<AddCategory type={'add'} />} />
+        <Route path="/edit-category" element={<AddCategory type={'edit'}/>} />
       </Route>
     </Routes>
   );

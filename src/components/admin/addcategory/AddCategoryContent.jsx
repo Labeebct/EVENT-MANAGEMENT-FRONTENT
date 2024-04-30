@@ -1,14 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BasicAlert from "../../shared/BasicAlert";
 import axiosInstance from "../../../instance/axiosInstance";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const AddCategoryContent = () => {
+const AddCategoryContent = ({ type }) => {
   const Navigate = useNavigate();
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get("id");
 
   const [imageUrl, setImageUrl] = useState("");
   const [success, setSuccess] = useState(false);
+  const [category, setCategory] = useState({});
   const [error, setError] = useState("");
+
+  if (type == "edit" && id) {
+    useEffect(() => {
+      const fetchCategory = async () => {
+        try {
+          const response = await axiosInstance.get(
+            `/admin/edit-category?id=${id}`
+          );
+          setCategory(response.data.category);
+        } catch (error) {
+          if (error.response) {
+            const { status } = error.response;
+            if (status == 404) {
+              Navigate("/404");
+            } else {
+              Navigate("/500");
+            }
+          } else {
+            Navigate("/500");
+          }
+        }
+      };
+
+      fetchCategory();
+    }, []);
+  }
+
+  const apiUrl =
+    type == "add" ? "/admin/add-category" : `/admin/edit-category?id=${id}`;
 
   const handleChange = (e) => {
     const { files } = e.target;
@@ -26,7 +60,6 @@ const AddCategoryContent = () => {
       return setError("Please provide category name.");
     else if (categoryDiscription.value.trim() == "")
       return setError("Please provide description.");
-    else if (!imageFile) return setError("Please provide a profile image.");
 
     const form = new FormData();
 
@@ -35,7 +68,7 @@ const AddCategoryContent = () => {
     form.append("categoryImage", imageFile);
 
     try {
-      const response = await axiosInstance.post("/admin/add-category", form);
+      const response = await axiosInstance.post(apiUrl, form);
       const { data, status } = response;
 
       if (status == 200) {
@@ -45,10 +78,12 @@ const AddCategoryContent = () => {
       }
     } catch (error) {
       if (error.response) {
-        const {data, status } = error.response;
+        const { data, status } = error.response;
         if (status == 500) {
           console.log(data.error);
           Navigate("/500");
+        } else if (status == 422) {
+          setError(data.msg)
         }
       } else {
         Navigate("/500");
@@ -65,7 +100,11 @@ const AddCategoryContent = () => {
         onSubmit={handleSubmit}
         className="h-auto rounded-md bg-white min-w-80 flex items-center flex-col py-4 px-10 w-[40%] border shadow-box border-[#0000000c] "
       >
-        <img className="w-36 h-36" src={imageUrl} alt="" />
+        <img
+          className="w-36 h-36"
+          src={imageUrl || `http://localhost:8082/${category.categoryImage}`}
+          alt=""
+        />
         <div className="w-auto mt-3 flex h-[3rem] items-center">
           <div className="my-4 w-full p-2 px-4 bg-cusGreen text-white font-poppins font-medium text-[.7rem] rounded-sm">
             CHOOSE FILE
@@ -88,6 +127,10 @@ const AddCategoryContent = () => {
             className="h-[2.4rem] w-full shadow-md border border-[#6363631a] outline-none px-4 text-[.9rem]"
             type="text"
             name="categoryName"
+            value={category ? category.categoryName : ""}
+            onChange={(e) =>
+              setCategory({ ...category, categoryName: e.target.value })
+            }
           />
         </span>
 
@@ -100,6 +143,10 @@ const AddCategoryContent = () => {
             className="h-[8rem] resize-none shadow-md w-full border border-[#6363631a] outline-none p-3 text-[.9rem]"
             type="text"
             name="categoryDiscription"
+            value={category ? category.categoryDiscription : ""}
+            onChange={(e) =>
+              setCategory({ ...category, categoryDiscription: e.target.value })
+            }
           />
         </span>
         {error && (

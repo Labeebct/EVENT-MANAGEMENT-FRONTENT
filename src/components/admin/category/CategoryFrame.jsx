@@ -81,7 +81,10 @@ const CategoryFrame = ({ data }) => {
       </p>
       {!isBlocked && (
         <div className="w-full h-auto flex justify-end  items-center ">
-          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 rounded-sm bg-green-600">
+          <button
+            onClick={() => Navigate(`/admin/edit-category?id=${data._id}`)}
+            className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 rounded-sm bg-green-600"
+          >
             <EditIcon sx={{ fontSize: "20px" }} />
           </button>
           <button

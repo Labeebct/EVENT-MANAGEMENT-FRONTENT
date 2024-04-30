@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MessageFrame from "./MessageFrame";
+import { useSelector } from "react-redux";
 import axiosInsatance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const MessageContent = () => {
   const Navigate = useNavigate();
   const [messages, setMessages] = useState([]);
+  const sortMessage = useSelector((state) => state.sort);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -29,6 +31,10 @@ const MessageContent = () => {
     fetchMessages();
   }, []);
 
+  useEffect(() => {
+    setMessages(sortMessage);
+  }, [sortMessage]);
+
   if (messages.length == 0) {
     return (
       <div className="h-full w-full flex justify-center items-center">
@@ -42,7 +48,7 @@ const MessageContent = () => {
   return (
     <div className="w-full p-3 px-4 h-auto flex flex-col gap-3">
       {messages.map((data) => (
-        <MessageFrame data={data} />
+        <MessageFrame key={data._id} data={data} />
       ))}
     </div>
   );
