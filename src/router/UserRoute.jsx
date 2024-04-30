@@ -26,7 +26,7 @@ const UserRoute = () => {
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/complete-profile" element={<CompleteProfile />} />
-      
+
       <Route path="/" element={<UserLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contactus />} />

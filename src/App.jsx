@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 import UserRouter from "./router/UserRoute";
-import AdminRouter from "./router/AdminRouter";
-import AgentRouter from "./router/AgentRouter";
+const AgentRouter = lazy(() => import("./router/AgentRouter"));
+const AdminRouter = lazy(() => import("./router/AdminRouter"));
 
 const App = () => {
   return (
