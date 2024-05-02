@@ -11,17 +11,17 @@ import Profile from "../pages/agent/Profile";
 const AgentRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<AgentLayout />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/add-events" element={<AddEvents />} />
-        <Route path="/my-events" element={<MyEvents />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/profile" element={<Profile />} />
-      </Route>
+        <Route path="/" element={<AgentLayout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/add-events" element={<AddEvents />} />
+          <Route path="/my-events" element={<MyEvents />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route> 
     </Routes>
-  ); 
+  );
 };
 
 export default AgentRouter;

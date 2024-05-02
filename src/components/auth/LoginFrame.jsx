@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import EyePassword from "../shared/EyePassword";
 import axiosinstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
@@ -9,6 +10,7 @@ const LoginFrame = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const Navigate = useNavigate();
+  const Dispatch = useDispatch();
 
   //Formdata for login
   const [form, setForm] = useState({
@@ -47,8 +49,18 @@ const LoginFrame = () => {
           if (status == 200) {
             setError(data.msg);
             setLoginSuccess(true);
-            localStorage.setItem("token", data.token);
             setTimeout(() => Navigate("/"), 300);
+            Dispatch({ type: "setJwt", payload: data.token });
+          } else if (status == 202) {
+            setError(data.msg);
+            setLoginSuccess(true);
+            setTimeout(
+              () =>
+                Navigate(
+                  `/complete-profile?email=${data.userExist.email}&role=${data.userExist.role}`
+                ),
+              300
+            );
           }
         } catch (error) {
           if (error.response) {

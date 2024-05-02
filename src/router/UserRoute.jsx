@@ -19,13 +19,13 @@ import CompleteProfile from "../pages/shared/CompleteProfile";
 
 const UserRoute = () => {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
-      <Route path="/forget-password" element={<ForgetPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/complete-profile" element={<CompleteProfile />} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/complete-profile" element={<CompleteProfile />} />
 
       <Route path="/" element={<UserLayout />}>
         <Route path="/" element={<Home />} />

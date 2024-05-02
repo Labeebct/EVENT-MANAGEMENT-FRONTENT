@@ -22,7 +22,10 @@ const ProfilePicSection = () => {
         <h3 className="mt-16 ml-11 md:mt-24 md:ml-16 text-[1.3rem]  font-inter font-bold">
           Labeeb ct
         </h3>
-        <h3 className="mt-2 ml-11 md:mt-4 md:ml-16 text-[.9rem] font-roboto">
+        <h3 className="mt-2 ml-11 md:mt-2 md:ml-16 text-[.9rem] font-roboto">
+          8590471530
+        </h3>
+        <h3 className="mt-2 ml-11 md:mt-2 md:ml-16 text-[.9rem] font-roboto">
           ctlabeebthaliyil@gmail.com
         </h3>
       </div>

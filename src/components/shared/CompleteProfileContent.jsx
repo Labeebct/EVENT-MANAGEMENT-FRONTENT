@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axiosInstance from "../../instance/axiosInstance";
+import { useDispatch } from "react-redux";
 import BasicAlert from "../../components/shared/BasicAlert";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const CompleteProfileContent = () => {
   const Navigate = useNavigate();
+  const Dispatch = useDispatch()
   const location = useLocation();
 
-  const email = "ctlabeebthaliyil@gmail.com";
-  const role = "user";
+  const searchParams = new URLSearchParams(location.search);
+  const email = searchParams.get("email");
+  const role = searchParams.get("role");
 
   const api =
     location.pathname === "/admin/complete-profile"
@@ -108,7 +111,6 @@ const CompleteProfileContent = () => {
       else if (landmark.trim() === "") setError(validationMsg.landmark);
       else if (houseno.trim() === "") setError(validationMsg.houseno);
       else {
-
         const formData = new FormData();
         Object.entries(form).forEach(([key, value]) => {
           formData.append(key, value);
@@ -119,6 +121,7 @@ const CompleteProfileContent = () => {
           const { data, status } = response;
           if (status === 200) {
             setError(data.msg);
+            Dispatch({type:'setJwt',payload:data.token})
             setSuccess(true);
             if (role == "admin")
               setTimeout(() => Navigate("/admin/dashboard"), 800);
@@ -135,7 +138,7 @@ const CompleteProfileContent = () => {
               Navigate("/500");
               console.log("Internal server error", error);
             }
-          } else {
+          } else {   
             Navigate("/500");
             console.log("No resonse from server", error);
           }
@@ -401,7 +404,9 @@ const CompleteProfileContent = () => {
                 <BasicAlert type={success ? "success" : "error"} msg={error} />
               )}
             </div>
-            <button className={`bg-cusOrange font-inter  mt-3 ease-in-out duration-200 active:scale-[.99] text-white shadow-box m-auto text-center p-2 w-full`}>
+            <button
+              className={`bg-cusOrange font-inter  mt-3 ease-in-out duration-200 active:scale-[.99] text-white shadow-box m-auto text-center p-2 w-full`}
+            >
               SUBMIT
             </button>
           </div>
