@@ -13,6 +13,7 @@ import Agents from "../pages/admin/Agents";
 import ForgetPassword from "../pages/adminAuth/ForgetPassword";
 import ResetPassword from "../pages/adminAuth/ResetPassword";
 import CompleteProfile from "../pages/shared/CompleteProfile";
+import Profile from "../pages/admin/Profile";
 
 const AdminRouter = () => {
   return (
@@ -31,6 +32,7 @@ const AdminRouter = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/messages" element={<Messages />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/add-category" element={<AddCategory type={'add'} />} />
         <Route path="/edit-category" element={<AddCategory type={'edit'}/>} />
       </Route>

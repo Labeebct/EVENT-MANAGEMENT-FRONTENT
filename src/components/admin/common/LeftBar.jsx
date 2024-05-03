@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
@@ -11,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import ChatIcon from '@mui/icons-material/Chat';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import { useDispatch } from "react-redux";
 
 function LeftBar() {
 
@@ -18,6 +20,7 @@ function LeftBar() {
   const [leftNav, setLeftNav] = useState(false);
 
   const location = useLocation();
+  const dispatch = useDispatch()
   const currentLocation = location.pathname;
 
   useEffect(() => {
@@ -48,6 +51,35 @@ function LeftBar() {
         break;
     }
   }, [currentLocation]);
+
+
+  const handleLogout = () => {
+
+    confirmAlert({
+      title: "Confirm to LOGOUT",
+      message: "Are you sure you want to Logout?",
+      titleClassName: "text-xl font-bold text-green-500",
+      buttons: [
+        {
+          label: "Yes",
+          style: { backgroundColor: "#D80032" },
+          className: "text-white font-bold py-2 px-4 rounded mr-2",
+          onClick: async () => {
+            dispatch({type:'removeJwt',payload:'admin'})
+          },
+        },
+        {
+          label: "No",
+          style: { backgroundColor: "#65B741" },
+          className:
+            "bg-green-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2",
+        },
+      ],
+      overlayClassName:
+        "fixed inset-0 bg-[black] bg-opacity-50 flex justify-center items-center",
+    });
+
+  }
 
   return (
     <div
@@ -141,7 +173,7 @@ function LeftBar() {
             Messages
           </li>
         </Link>
-        <Link to="/admin/login" className="mt-32">
+        <Link onClick={handleLogout} className="mt-32">
           <li
             className={`px-4 py-4 text-[.85rem] text-white flex xl:gap-2 gap-4 items-center  hover:bg-[#d4d4d40a] border-opacity-10 cursor-pointer font-inter`}
           >

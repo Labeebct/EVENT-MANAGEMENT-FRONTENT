@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
+import CategoryContext from "../context/CategoryContext";
 import UserLayout from "../layout/UserLayout";
 import Login from "../pages/userAuth/Login";
 import Signup from "../pages/userAuth/Signup";
@@ -19,6 +19,7 @@ import CompleteProfile from "../pages/shared/CompleteProfile";
 
 const UserRoute = () => {
   return (
+    <CategoryContext>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -27,20 +28,21 @@ const UserRoute = () => {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/complete-profile" element={<CompleteProfile />} />
 
-      <Route path="/" element={<UserLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contactus />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/about" element={<Aboutus />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/event_details" element={<EventDetails />} />
-      </Route>
+        <Route path="/" element={<UserLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contactus />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="/about" element={<Aboutus />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/event_details" element={<EventDetails />} />
+        </Route>
 
-      <Route path="*" element={<PageNotFoundContent />} />
-      <Route path="/404" element={<PageNotFoundContent />} />
-      <Route path="/500" element={<InternalServerError />} />
-    </Routes>
+        <Route path="*" element={<PageNotFoundContent />} />
+        <Route path="/404" element={<PageNotFoundContent />} />
+        <Route path="/500" element={<InternalServerError />} />
+      </Routes>
+    </CategoryContext>
   );
 };
 

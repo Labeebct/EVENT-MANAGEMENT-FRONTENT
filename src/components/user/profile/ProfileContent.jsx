@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ProfilePicSection from "./ProfilePicSection";
 import axiosInstance from "../../../instance/axiosInstance";
-import ProfileAddress from "./ProfileAddress";
 import { useNavigate } from "react-router-dom";
-import ProfileShowContent from "./ProfileShowContent";
 
-const ProfileContent = () => {
+const ProfileContent = ({role}) => {
   const Navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
     const fetchProfileDatas = async () => {
-      try { 
+      try {
         const response = await axiosInstance.get("/profile");
         const { data, status } = response;
 
@@ -38,8 +36,7 @@ const ProfileContent = () => {
 
   return (
     <>
-      <ProfilePicSection profileImg={profile.profile} />
-      <ProfileShowContent profile={profile} />
+      <ProfilePicSection role={role} profile={profile} />
     </>
   );
 };

@@ -36,8 +36,14 @@
     background-repeat: no-repeat;
     background-size:contain;
 }
-.profile_bg{
+.user_profile_bg{
     background-image: url('./assets/pro_3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.agent_profile_bg{
+    background-image: url('./assets/pixel.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;

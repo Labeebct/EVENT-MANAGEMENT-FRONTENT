@@ -32,6 +32,8 @@ const Header = () => {
         return "Messages";
       case "/admin/agents":
         return "Agents";
+      case "/admin/profile":
+        return "Profile";
     }
   };
 
@@ -98,7 +100,7 @@ const Header = () => {
             <NotificationsIcon sx={{ fontSize: "1.58rem", opacity: ".8" }} />
           </button>
         </Link>
-        <Link to={"/profile"}>
+        <Link to={"/admin/profile"}>
           <button className="duration-100 ease-out active:scale-[.95]">
             <PersonIcon sx={{ fontSize: "1.65rem", opacity: ".8" }} />
           </button>

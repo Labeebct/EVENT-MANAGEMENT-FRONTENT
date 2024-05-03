@@ -1,5 +1,5 @@
 const jwtAuthReducer = (state = null, action) => {
-    
+
     switch (action.type) {
         case 'setJwt':
             const token = action.payload
@@ -10,6 +10,17 @@ const jwtAuthReducer = (state = null, action) => {
             return token1
         default:
             return state;
+        case 'removeJwt':
+            const role = action.payload
+            if (role == 'admin') {
+                localStorage.removeItem('jwt')
+                state = null
+                window.location.href = '/admin/login'
+            } else {
+                localStorage.removeItem('jwt')
+                state = null
+                window.location.href = '/login'
+            }
     }
 }
 

@@ -3,7 +3,7 @@ import ProfileContent from '../../components/user/profile/ProfileContent'
 
 const Profile = () => {
   return (
-    <ProfileContent role={'user'} />
+    <ProfileContent role={'admin'} />
   )
 }
 

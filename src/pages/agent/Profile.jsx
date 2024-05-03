@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import ProfileContent from "../../components/user/profile/ProfileContent";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  return <ProfileContent role={'agent'} />;
+};
 
-export default Profile
+export default Profile;
