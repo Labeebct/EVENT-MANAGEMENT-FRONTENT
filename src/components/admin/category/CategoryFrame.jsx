@@ -3,9 +3,9 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import BlockIcon from "@mui/icons-material/Block";
 import { useAlert } from "../../../context/CenterAlert";
+import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import axiosInstance from "../../../instance/axiosInstance";
-import { useNavigate } from "react-router-dom";
 
 const CategoryFrame = ({ data }) => {
   const Navigate = useNavigate();
