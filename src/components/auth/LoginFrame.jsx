@@ -49,8 +49,8 @@ const LoginFrame = () => {
           if (status == 200) {
             setError(data.msg);
             setLoginSuccess(true);
-            setTimeout(() => Navigate("/"), 300);
             Dispatch({ type: "setJwt", payload: data.token });
+            data.role == 'user' ? setTimeout(() => Navigate("/"), 300) : setTimeout(() => Navigate("/agent/home"), 300);
           } else if (status == 202) {
             setError(data.msg);
             setLoginSuccess(true);
