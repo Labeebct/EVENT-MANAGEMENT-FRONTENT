@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Select from "react-select";
 import { catgoryContext } from "../../../context/CategoryContext";
 
-const CategorySelect = ({ selectValue, setSelectValue }) => {
+const CategorySelect = ({ event }) => {
   const catgoryDatas = catgoryContext();
 
   const [value, setValue] = useState("");
@@ -14,17 +14,21 @@ const CategorySelect = ({ selectValue, setSelectValue }) => {
     }));
   }, [catgoryDatas]);
 
+  useEffect(() => {
+    setValue({
+      value: event.category,
+      label: event.category,
+    });
+  }, [event.category]);
+
   const handleChange = (selectedOption) => {
     setValue(selectedOption);
-    setSelectValue({
-      ...selectValue,
-      category: selectedOption.value,
-    });
   };
-  
+
   return (
     <Select
       className="capitalize"
+      name="category"
       options={options}
       value={value}
       onChange={handleChange}

@@ -1,9 +1,9 @@
 import React from 'react'
 import AddEventContent from '../../components/agent/addevents/AddEventContent'
 
-const AddEvents = () => {
+const AddEvents = ({type}) => {
   return (
-    <AddEventContent />
+    <AddEventContent type={type} />
   )
 }
 

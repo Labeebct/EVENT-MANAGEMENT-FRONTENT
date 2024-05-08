@@ -8,6 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import axiosInstance from "../../../instance/axiosInstance";
 
 const CategoryFrame = ({ data }) => {
+  
   const Navigate = useNavigate();
   const showAlert = useAlert();
   const [isBlocked, setBlocked] = useState(data.isBlocked);

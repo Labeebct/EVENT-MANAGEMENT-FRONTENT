@@ -13,8 +13,9 @@ const AgentRouter = () => {
     <Routes>
         <Route path="/" element={<AgentLayout />}>
           <Route path="/home" element={<Home />} />
-          <Route path="/add-events" element={<AddEvents />} />
+          <Route path="/add-events" element={<AddEvents type={'add'} />} />
           <Route path="/my-events" element={<MyEvents />} />
+          <Route path="/edit-event" element={<AddEvents type={'edit'} />} />
           <Route path="/my-bookings" element={<MyBookings />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

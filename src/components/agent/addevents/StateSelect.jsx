@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Select from "react-select";
 
 const indianStates = [
@@ -38,23 +38,31 @@ const indianStates = [
   "West Bengal",
 ];
 
-const StateSelect = ({selectValue,setSelectValue}) => {
+const StateSelect = ({ event }) => {
   const [value, setValue] = useState("");
 
   const options = useMemo(() => {
     return indianStates.map((state) => ({ value: state, label: state }));
   }, []);
 
-  const changeHandler = (value) => {
-    setValue(value);
-    setSelectValue({
-      ...selectValue,
-      state: value.value,
+  useEffect(() => {
+    setValue({
+      value: event.state,
+      label: event.state,
     });
+  }, [event.state]);
+
+  const changeHandler = (selectedOption) => {
+    setValue(selectedOption);
   };
 
   return (
-    <Select name="state" options={options} value={value} onChange={changeHandler} />
+    <Select
+      name="state"
+      options={options}
+      value={value}
+      onChange={changeHandler}
+    />
   );
 };
 

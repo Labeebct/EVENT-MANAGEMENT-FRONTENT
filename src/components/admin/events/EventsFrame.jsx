@@ -7,7 +7,7 @@ import axiosInstance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 
-const EventsFrame = ({ data }) => {
+const EventsFrame = ({ role, data }) => {
   const Navigate = useNavigate();
   const showAlert = useAlert();
   const [isBlocked, setBlocked] = useState(data.isBlocked);
@@ -16,7 +16,7 @@ const EventsFrame = ({ data }) => {
   const handleBlock = () => {
     confirmAlert({
       title: `Confirm to ${status}`,
-      message: `Are you sure you want to ${status} the category?`,
+      message: `Are you sure you want to ${status} the event?`,
       titleClassName: "text-xl font-inter font-bold text-green-500",
       buttons: [
         {
@@ -33,7 +33,7 @@ const EventsFrame = ({ data }) => {
                 setBlocked(!isBlocked);
                 showAlert(
                   "success",
-                  `Category has been ${isBlocked ? "Unblocked" : "Blocked"}.`
+                  `Event has been ${isBlocked ? "Unblocked" : "Blocked"}.`
                 );
               }
             } catch (error) {
@@ -68,7 +68,7 @@ const EventsFrame = ({ data }) => {
     <div className="filter relative  w-full bg-white flex shadow-box flex-1 h-auto">
       <img
         src={`http://localhost:8082/${data.eventImage}`}
-        className="md:w-60 w-44 sm:w-52 h-auto p-6 object-cover rounded-lg"
+        className="md:w-48 w-44 h-auto p-6 object-cover rounded-lg"
       />
       <div class="flex relative bg-white justify-between p-6 pl-1 w-full ">
         <div class="flex  flex-col gap-2">
@@ -95,15 +95,17 @@ const EventsFrame = ({ data }) => {
           </div>
         </div>
         <div className="w-full absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end pr-5-6 items-center ">
-          <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 bg-green-600">
-            <EditIcon sx={{ fontSize: "19px" }} />
-          </button>
+          {role === "agent" && (
+            <button onClick={() => Navigate(`/agent/edit-event?id=${data._id}`)} className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 bg-green-600">
+              <EditIcon sx={{ fontSize: "19px" }} />
+            </button>
+          )}
           <button className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out bg-red-600">
             <BlockIcon onClick={handleBlock} sx={{ fontSize: "19px" }} />
           </button>
         </div>
       </div>
-      {isBlocked && (
+     {isBlocked && (
         <div className="absolute w-full h-full flex justify-center items-center backdrop-blur-[.04rem] bg-[#4848483f]">
           <btn
             onClick={handleBlock}

@@ -2,14 +2,21 @@ import { useEffect } from "react";
 import EventsFrame from "./EventsFrame";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const EventsContent = () => {
   const [events, setEvents] = useState([]);
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const category = queryParams.get("category");
+
+  const api = category ? `/events?category=${category}` : "/events";
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axiosInstance.get("/events");
+        const response = await axiosInstance.get(api);
         const { data, status } = response;
 
         if (status == 200) {

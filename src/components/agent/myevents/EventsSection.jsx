@@ -38,7 +38,7 @@ const EventsSection = () => {
   return (
     <div className="w-full p-4 h-auto grid grid-cols-1 lg:grid-cols-2 gap-3">
       {myEvents.map((data) => (
-        <EventsFrame key={data._id} data={data} />
+        <EventsFrame role={'agent'}  key={data._id} data={data} />
       ))}
     </div>
   );

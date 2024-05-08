@@ -32,8 +32,8 @@ const UserRoute = () => {
           <Route path="/category" element={<Category />} />
           <Route path="/about" element={<Aboutus />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/view-event" element={<EventDetails />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/event_details" element={<EventDetails />} />
         </Route>
 
         <Route path="*" element={<PageNotFoundContent />} />
