@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 const EventDetailsFrame = () => {
   const Navigate = useNavigate();
   const location = useLocation();
-
   const dispatch = useDispatch();
+
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
   const proceedToPay = useSelector((state) => state.confirm.proceedToPay);
@@ -23,7 +23,9 @@ const EventDetailsFrame = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInstance.get(`/view-event?id=${id}`);
+        dispatch({ type: "loading", payload: false });
         const { data, status } = response;
 
         if (status == 200) {

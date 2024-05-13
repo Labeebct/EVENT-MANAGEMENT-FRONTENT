@@ -3,9 +3,11 @@ import EventsFrame from "./EventsFrame";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const EventsContent = () => {
   const [events, setEvents] = useState([]);
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -16,7 +18,9 @@ const EventsContent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInstance.get(api);
+        dispatch({ type: "loading", payload: false });
         const { data, status } = response;
 
         if (status == 200) {

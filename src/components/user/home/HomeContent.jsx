@@ -1,6 +1,7 @@
 import HomeCatSection from "./HomeCatSection";
 import HomeWedding from "./HomeWedding";
 import WeddingRound from "./WeddingRound";
+import timoutLoading from "../../../config/timeoutLoading";
 import HomePriceToSuit from "./HomePriceToSuit";
 import HomeParty from "./HomeParty";
 import LeadingCompanies from "./LeadingCompanies";
@@ -8,6 +9,7 @@ import HomeCoFounder from "./HomeCoFounder";
 import HomeMemorable from "./HomeMemorable";
 
 const HomeContent = () => {
+  timoutLoading();
   return (
     <>
       <div className="w-full h-[calc(100vh-4.5rem)] home_main_bg flex items-center justify-center flex-col gap-2">
@@ -18,7 +20,7 @@ const HomeContent = () => {
           &ldquo;Transforming Moments into Memories&rdquo;
         </h3>{" "}
       </div>
-      <HomeCatSection from={'home'} />
+      <HomeCatSection from={"home"} />
       <HomeWedding />
       <WeddingRound />
       <HomePriceToSuit />

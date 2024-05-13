@@ -10,7 +10,7 @@ const Loading = () => {
   }, []);
 
   return (
-    <div className="w-screen flex justify-center items-center bg-white z-10 h-screen fixed ">
+    <div className="w-screen flex justify-center items-center bg-white z-50 h-screen fixed ">
       <div className="mb-20">
         <ScaleLoader color="#fd5d00" height={44} width={9} />
       </div>

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import ProfilePicSection from "./ProfilePicSection";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const ProfileContent = ({ role }) => {
   const Navigate = useNavigate();
   const [profile, setProfile] = useState({});
+  const dispatch = useDispatch();
 
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("jwt"));
 
@@ -16,7 +18,9 @@ const ProfileContent = ({ role }) => {
   useEffect(() => {
     const fetchProfileDatas = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInstance.get("/profile");
+        dispatch({ type: "loading", payload: false });
         const { data, status } = response;
 
         if (status == 200) {
