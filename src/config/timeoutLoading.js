@@ -7,10 +7,10 @@ const timoutLoading = () => {
         dispatch({ type: "loading", payload: true });
         const timer = setTimeout(() => {
             dispatch({ type: "loading", payload: false });
-        }, 2000);
+        }, 1500);
 
         return () => clearTimeout(timer);
-    }, [dispatch]);
+    }, []);
 }
 
-export default timoutLoading
+export default timoutLoading  

@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import EventsFrame from "./EventsFrame";
+import scrollToTop from "../../../config/scrollToTop";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const EventsContent = () => {
   const [events, setEvents] = useState([]);
+  const Navigate = useNavigate()
   const dispatch = useDispatch();
+  scrollToTop();
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);

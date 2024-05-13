@@ -7,7 +7,6 @@ const Context = createContext();
 
 const CategoryContext = ({ children }) => {
   const [category, setCategory] = useState([]);
-
   const navigate = useNavigate();
 
   useEffect(() => {

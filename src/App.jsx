@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import { lazy, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { lazy, useEffect, useLayoutEffect } from "react";
 import CategoryContext from "./context/CategoryContext";
 import { useDispatch, useSelector } from "react-redux";
 import UserRouter from "./router/UserRoute";

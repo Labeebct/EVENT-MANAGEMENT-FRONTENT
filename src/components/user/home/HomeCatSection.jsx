@@ -6,7 +6,6 @@ import weddingImg from "../../../assets/bg (13).jpg";
 import conferenceImg from "../../../assets/bg (8).jpg";
 
 const HomeCatSection = ({ from }) => {
-  
   const catgoryDatas = catgoryContext();
 
   const catObj = [
@@ -47,13 +46,17 @@ const HomeCatSection = ({ from }) => {
           from == "home" ? "bg-cusBlue" : "bg-white"
         } bg-cusBlue m-auto rounded-md flex-1 gap-3 h-auto  ${
           from == "home" && "mt-8"
-        } ${from == "category" && "sm:mt-0 mt-6"}  py-4  px-4 flex ${from == 'home' ? 'justify-around flex-wrap' : 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-1 grid' }`}
+        } ${from == "category" && "sm:mt-0 mt-6"}  py-4  px-4 flex ${
+          from == "home"
+            ? "justify-around flex-wrap"
+            : "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-1 grid"
+        }`}
       >
-       {catgoryDatas
-        .slice(0, from === "home" ? 4 : catgoryDatas.length)
-        .map((list) => (
-          <HomeCatFrame key={list._id} from={from} list={list} />
-        ))}
+        {catgoryDatas
+          .slice(0, from === "home" ? 4 : catgoryDatas.length)
+          .map((list) => (
+            <HomeCatFrame key={list._id} from={from} list={list} />
+          ))}
       </div>
     </div>
   );
