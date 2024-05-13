@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import CategoryFrame from "./CategoryFrame";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../instance/axiosInstance";
+import { useDispatch } from "react-redux";
 
 const CategoryContent = () => {
   const Navigate = useNavigate();
   const [category, setCategory] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCategory = async () => {
       try {
+        dispatch({type:'loading',payload:true})
         const response = await axiosInstance.get("/admin/category");
+        dispatch({type:'loading',payload:false})
         const { data, status } = response;
         if (status == 200) {
           setCategory(data.category);

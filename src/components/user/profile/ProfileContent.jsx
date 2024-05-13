@@ -3,9 +3,15 @@ import ProfilePicSection from "./ProfilePicSection";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-const ProfileContent = ({role}) => {
+const ProfileContent = ({ role }) => {
   const Navigate = useNavigate();
   const [profile, setProfile] = useState({});
+
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("jwt"));
+
+  useEffect(() => {
+    !loggedIn && Navigate("/login");
+  }, [Navigate]);
 
   useEffect(() => {
     const fetchProfileDatas = async () => {

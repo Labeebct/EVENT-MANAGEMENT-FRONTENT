@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axiosInstance from '../../../instance/axiosInstance'
+import axiosInstance from "../../../instance/axiosInstance";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AddIcon from "@mui/icons-material/Add";
@@ -40,7 +40,11 @@ const Header = () => {
   const handleChange = async (e) => {
     const sortValue = e.target.value;
     try {
-      const response = await axiosInstance.post("/admin/sort-messages", {sortValue});
+      dispatch({ type: "loading", payload: true });
+      const response = await axiosInstance.post("/admin/sort-messages", {
+        sortValue,
+      });
+      dispatch({ type: "loading", payload: false });
       const messages = response.data.messages;
       dispatch({ type: "sort", payload: messages });
     } catch (error) {

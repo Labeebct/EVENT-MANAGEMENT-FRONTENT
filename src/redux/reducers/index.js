@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
 import messageReducer from './msgSortReducer'
 import jwtAuthReducer from './jwtAuthReducer'
+import centerConfirm from "./centerConfirm";
+import loadingReducer from "./loading";
 
 const rootReducer = combineReducers({
     sort: messageReducer,
-    auth: jwtAuthReducer
+    auth: jwtAuthReducer,
+    confirm: centerConfirm,
+    loading: loadingReducer
 })
 
 export default rootReducer

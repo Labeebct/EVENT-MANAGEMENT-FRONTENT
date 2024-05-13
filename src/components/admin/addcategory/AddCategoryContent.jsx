@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import BasicAlert from "../../shared/BasicAlert";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const AddCategoryContent = ({ type }) => {
   const Navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
@@ -19,9 +21,11 @@ const AddCategoryContent = ({ type }) => {
     useEffect(() => {
       const fetchCategory = async () => {
         try {
+          dispatch({ type: "loading", payload: true });
           const response = await axiosInstance.get(
             `/admin/edit-category?id=${id}`
           );
+          dispatch({ type: "loading", payload: false });
           setCategory(response.data.category);
         } catch (error) {
           if (error.response) {
@@ -83,7 +87,7 @@ const AddCategoryContent = ({ type }) => {
           console.log(data.error);
           Navigate("/500");
         } else if (status == 422) {
-          setError(data.msg)
+          setError(data.msg);
         }
       } else {
         Navigate("/500");

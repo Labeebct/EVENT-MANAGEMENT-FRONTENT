@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const DashBoardStati = () => {
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
   const [usersCount, setUsersCount] = useState(0);
   const [categoryCount, setCatgoryCount] = useState(0);
+  const [eventsCount, setEventsCount] = useState(0);
 
   useEffect(() => {
-
     const fetchStatitics = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInstance.get("/admin/dashboard");
-        const { usersCount, catagoryCount } = response.data;
+        dispatch({ type: "loading", payload: false });
+        const { usersCount, catagoryCount, eventsCount } = response.data;
         setUsersCount(usersCount);
         setCatgoryCount(catagoryCount);
+        setEventsCount(eventsCount);
       } catch (error) {
         if (error.response) {
           const { data, status } = error.response;
@@ -31,7 +36,6 @@ const DashBoardStati = () => {
     };
 
     fetchStatitics();
-
   }, []);
 
   return (
@@ -49,7 +53,7 @@ const DashBoardStati = () => {
           Total Categories
         </h3>
         <h5 className="text-[1.3rem] mt-2 font-poppins font-bold text-gray-700">
-        {categoryCount}
+          {categoryCount}
         </h5>
       </div>
       <div className="flex-1 flex flex-col cursor-pointer duration-150 hover:scale-[1.02] ease-in items-center py-5 bg-[#1d7b8a3b] shadow-sm h-28 rounded-md min-w-[270px]">
@@ -57,7 +61,7 @@ const DashBoardStati = () => {
           Total Events
         </h3>
         <h5 className="text-[1.3rem] mt-2 font-poppins font-bold text-gray-700">
-          12
+          {eventsCount}
         </h5>
       </div>
     </div>

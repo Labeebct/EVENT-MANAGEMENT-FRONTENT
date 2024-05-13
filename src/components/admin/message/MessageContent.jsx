@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import MessageFrame from "./MessageFrame";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axiosInsatance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const MessageContent = () => {
   const Navigate = useNavigate();
   const [messages, setMessages] = useState([]);
+  const dispatch = useDispatch();
   const sortMessage = useSelector((state) => state.sort);
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInsatance.get("/admin/messages");
+        dispatch({ type: "loading", payload: false });
         const { data } = response;
         setMessages(data.messages);
       } catch (error) {

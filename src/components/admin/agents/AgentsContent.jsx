@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../instance/axiosInstance";
 import UsersFrame from "../users/UsersFrame";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const AgentsContent = () => {
   const [agents, setAgents] = useState([]);
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        dispatch({ type: "loading", payload: true });
         const response = await axiosInstance.get("/admin/agents");
+        dispatch({ type: "loading", payload: false });
         const { data, status } = response;
 
         if (status == 200) {

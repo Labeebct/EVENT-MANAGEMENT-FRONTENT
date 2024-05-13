@@ -2,25 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import EventSeatIcon from "@mui/icons-material/EventSeat";
 import CategoryIcon from "@mui/icons-material/Category";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
-import ChatIcon from '@mui/icons-material/Chat';
-import HandshakeIcon from '@mui/icons-material/Handshake';
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import ChatIcon from "@mui/icons-material/Chat";
+import HandshakeIcon from "@mui/icons-material/Handshake";
 import { useDispatch } from "react-redux";
 
 function LeftBar() {
-
   const [page, setPage] = useState("");
   const [leftNav, setLeftNav] = useState(false);
-
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const currentLocation = location.pathname;
 
   useEffect(() => {
@@ -52,9 +50,7 @@ function LeftBar() {
     }
   }, [currentLocation]);
 
-
   const handleLogout = () => {
-
     confirmAlert({
       title: "Confirm to LOGOUT",
       message: "Are you sure you want to Logout?",
@@ -65,7 +61,7 @@ function LeftBar() {
           style: { backgroundColor: "#D80032" },
           className: "text-white font-bold py-2 px-4 rounded mr-2",
           onClick: async () => {
-            dispatch({type:'removeJwt',payload:'admin'})
+            dispatch({ type: "removeJwt", payload: "admin" });
           },
         },
         {
@@ -78,8 +74,7 @@ function LeftBar() {
       overlayClassName:
         "fixed inset-0 bg-[black] bg-opacity-50 flex justify-center items-center",
     });
-
-  }
+  };
 
   return (
     <div
