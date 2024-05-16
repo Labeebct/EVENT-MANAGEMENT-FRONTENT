@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CategoryContext from "./context/CategoryContext";
 import { useDispatch, useSelector } from "react-redux";
+import TopRightAlert from "./components/shared/TopRightAlert";
 import jwtDecode from "./utils/jwtDecode";
 import UserRouter from "./router/UserRoute";
 import AgentRouter from "./router/AgentRouter";
@@ -11,7 +12,6 @@ import Loading from "./components/shared/Loading";
 import io from "socket.io-client";
 
 const App = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const confirmModal = useSelector((state) => state.confirm.isModalOpen);
   const advanceAmount = useSelector((state) => state.confirm.advanceAmount);
@@ -20,10 +20,11 @@ const App = () => {
   const type = useSelector((state) => state.confirm.type);
   const message = useSelector((state) => state.confirm.message);
   const isLoading = useSelector((state) => state.loading.isLoading);
+  // const messageAlert = useSelector((state) => state.rightAlert.showAlert);
+  const sideMessage = useSelector((state) => state.rightAlert.message)
   const socket = useSelector((state) => state.socket.socket);
 
   useEffect(() => {
-    console.log(socket);
     if (!socket) {
       const socket = io("http://localhost:8082");
       socket.on("connect", () => {
@@ -34,15 +35,15 @@ const App = () => {
         "addMember",
         memeber?.userId || memeber?.agentId || memeber?.adminId
       );
-      console.log(socket);
+
       dispatch({ type: "socket", payload: socket });
       dispatch({ type: "getJwt", payload: localStorage.getItem("jwt") });
-
     }
   }, [socket]);
 
   return (
     <CategoryContext>
+      {sideMessage && <TopRightAlert message={sideMessage} />}
       {isLoading && <Loading />}
       <Routes>
         <Route path="/*" element={<UserRouter />} />

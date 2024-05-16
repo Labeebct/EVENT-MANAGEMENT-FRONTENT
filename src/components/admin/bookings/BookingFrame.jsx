@@ -56,7 +56,7 @@ const BookingFrame = ({ type, data }) => {
             </div>
 
             <div class="text-[.9rem] font-roboto capitalize text-gray-700">
-              Booked By: {data?.userProfile[0]?.fullname}
+              Booked By: {data?.userProfile?.[0]?.fullname}
             </div>
             <div class="text-[.9rem] font-roboto capitalize text-gray-700">
               Booked Date: {formatDate(data.bookedDate)}
@@ -106,40 +106,40 @@ const BookingFrame = ({ type, data }) => {
         <h3 className="font-bold px-6 font-inter">User Details</h3>
         <div className="px-6 p-3 flex flex-col gap-2">
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Full name : {data?.userProfile[0]?.fullname}
+            Full name : {data?.userProfile?.[0]?.fullname}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Mobile : {data?.userProfile[0]?.mobilenum}
+            Mobile : {data?.userProfile?.[0]?.mobilenum}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            DOB : {data?.userProfile[0]?.dob}
+            DOB : {data?.userProfile?.[0]?.dob}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Gender : {data?.userProfile[0]?.gender}
+            Gender : {data?.userProfile?.[0]?.gender}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Occupation : {data?.userProfile[0]?.occupation}
+            Occupation : {data?.userProfile?.[0]?.occupation}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Refaral Source : {data?.userProfile[0]?.referalsource}
+            Refaral Source : {data?.userProfile?.[0]?.referalsource}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            State : {data?.userProfile[0]?.state}
+            State : {data?.userProfile?.[0]?.state}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            District : {data?.userProfile[0]?.district}
+            District : {data?.userProfile?.[0]?.district}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            City : {data?.userProfile[0]?.city}
+            City : {data?.userProfile?.[0]?.city}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Pincode : {data?.userProfile[0]?.pincode}
+            Pincode : {data?.userProfile?.[0]?.pincode}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            Landmark : {data?.userProfile[0]?.landmark}
+            Landmark : {data?.userProfile?.[0]?.landmark}
           </h4>
           <h4 className="font-roboto text-slate-700 text-[.78em] capitalize text-sm">
-            House No : {data?.userProfile[0]?.houseno}
+            House No : {data?.userProfile?.[0]?.houseno}
           </h4>
         </div>
 

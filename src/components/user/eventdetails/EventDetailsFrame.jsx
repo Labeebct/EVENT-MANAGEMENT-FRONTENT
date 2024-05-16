@@ -3,7 +3,6 @@ import Select from "react-select";
 import BasicAlert from "../../user/../shared/BasicAlert";
 import axiosInstance from "../../../instance/axiosInstance";
 import { jwtDecode } from "jwt-decode";
-import { makePayment } from "../../../config/razorPay";
 import { openModal } from "../../../redux/actions/centerConfirm";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

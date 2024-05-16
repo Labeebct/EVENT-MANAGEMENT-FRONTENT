@@ -2,16 +2,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Header from "../components/agent/common/Header";
 import Footer from "../components/user/common/Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { addBooking } from "../redux/reducers/updateBooking";
 
 const UserLayout = () => {
   const [authenticate, setAuthenticate] = useState(false);
   const token = useSelector((state) => state.auth);
   const localStorageToken = localStorage.getItem("jwt");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const socket = useSelector((state) => state.socket.socket);
-
 
   useEffect(() => {
     if (!token) {
@@ -35,19 +36,15 @@ const UserLayout = () => {
         return;
       }
     }
-   
   }, []);
 
-  useEffect(()=>{
-    if(socket){
-      console.log("socket from layout",socket)
+  useEffect(() => {
+    if (socket) {
       socket.on("fetchBooking", (booking) => {
-        alert("got it")
-        console.log("Emitted success");
-        console.log(booking);
+        dispatch(addBooking(booking));
       });
     }
-  },[socket])
+  }, [socket]);
 
   return (
     authenticate && (
