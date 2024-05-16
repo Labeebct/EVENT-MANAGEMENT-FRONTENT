@@ -10,6 +10,8 @@ const UserLayout = () => {
   const token = useSelector((state) => state.auth);
   const localStorageToken = localStorage.getItem("jwt");
   const navigate = useNavigate();
+  const socket = useSelector((state) => state.socket.socket);
+
 
   useEffect(() => {
     if (!token) {
@@ -33,7 +35,19 @@ const UserLayout = () => {
         return;
       }
     }
+   
   }, []);
+
+  useEffect(()=>{
+    if(socket){
+      console.log("socket from layout",socket)
+      socket.on("fetchBooking", (booking) => {
+        alert("got it")
+        console.log("Emitted success");
+        console.log(booking);
+      });
+    }
+  },[socket])
 
   return (
     authenticate && (

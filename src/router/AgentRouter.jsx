@@ -7,7 +7,7 @@ import AddEvents from "../pages/agent/AddEvents";
 import About from "../pages/agent/About";
 import Contact from "../pages/agent/Contact";
 import Profile from "../pages/agent/Profile";
-
+  
 const AgentRouter = () => {
   return (
     <Routes>

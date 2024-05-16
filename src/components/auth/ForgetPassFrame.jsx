@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import timeoutLoading from "../../config/timeoutLoading";
 import axiosInstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const ForgetPassFrame = () => {
+  //Loading
+  timeoutLoading();
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const Navigate = useNavigate();
 
@@ -78,7 +82,9 @@ const ForgetPassFrame = () => {
             className="h-[2.5rem] border outline-none px-3 mb-2 text-[.9rem] border-[#39393948] drop-shadow-sm"
           />
         </div>
-        {message && <BasicAlert type={success ? 'success' : 'error'} msg={message} /> }
+        {message && (
+          <BasicAlert type={success ? "success" : "error"} msg={message} />
+        )}
         <button
           type="submit"
           className="w-full py-2 mt-2 font-roboto bg-cusOrange tracking-wider active:scale-[.96] ease-out duration-100 top-[21rem] right-24 text-white cursor-pointer"

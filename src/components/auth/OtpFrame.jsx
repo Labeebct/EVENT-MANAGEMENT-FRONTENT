@@ -1,9 +1,13 @@
 import { useRef, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import timeoutLoading from "../../config/timeoutLoading";
 import axiosInstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const OtpFrame = () => {
+  //Loading
+  timeoutLoading();
+
   const navigate = useNavigate();
 
   //Taking out email from params

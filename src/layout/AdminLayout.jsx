@@ -19,7 +19,7 @@ const AdminLayout = () => {
           setAuthenticate(true);
           return;
         } else {
-          navigate("/login");
+          navigate("/admin/login");
           return;
         }
       } else {

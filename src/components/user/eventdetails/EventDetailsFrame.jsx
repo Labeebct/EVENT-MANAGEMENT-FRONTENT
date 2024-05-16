@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import BasicAlert from "../../user/../shared/BasicAlert";
 import axiosInstance from "../../../instance/axiosInstance";
+import { jwtDecode } from "jwt-decode";
 import { makePayment } from "../../../config/razorPay";
 import { openModal } from "../../../redux/actions/centerConfirm";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,14 +12,19 @@ const EventDetailsFrame = () => {
   const Navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const socket = useSelector((state) => state.socket.socket);
 
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
-  const proceedToPay = useSelector((state) => state.confirm.proceedToPay);
+  const proceedPending = useSelector((state) => state.confirm.proceedPending);
 
   const [event, setEvent] = useState({});
   const [error, setError] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
+
+  let type;
+  let title;
+  let message;
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -46,14 +52,35 @@ const EventDetailsFrame = () => {
   }, [id, location]);
 
   useEffect(() => {
-    if (proceedToPay) {
-      makePayment(event, selectedDate);
+    if (proceedPending) {
+      dispatch({ type: "loading", payload: true });
+      const jwt = localStorage.getItem("jwt");
+      const user = jwtDecode(jwt);
+      const bookingDetails = {
+        amount: event.advanceAmount,
+        selectedDate: selectedDate.value,
+        event: event,
+        agent: event.agentId,
+        user: user.userId,
+      };
+      socket.emit("bookEvent", bookingDetails);
+      setTimeout(() => {
+        dispatch({ type: "loading", payload: false });
+        dispatch(
+          openModal(
+            (type = "pending"),
+            (title = "Booking Request Sent"),
+            (message =
+              "Your event booking request has been submitted. Once approved by the agent, you will be directed to the payment section to finalize your booking. Thank you for choosing us, and we anticipate confirming your reservation shortly")
+          )
+        );
+      }, 3000);
     }
 
     return () => {
       dispatch({ type: "CANCEL_PAYMENT" });
     };
-  }, [proceedToPay, dispatch]);
+  }, [proceedPending, dispatch]);
 
   const handleDateChange = (selectedOption) => setSelectedDate(selectedOption);
 
@@ -65,11 +92,11 @@ const EventDetailsFrame = () => {
     : [];
 
   const handleBook = () => {
-    let type = null;
-    let title = "Confirm to Booking";
-    let message = `Are you sure you want to book the event with selected date? if it is
-  you willl be charged ₹${event.advanceAmount} as booking charge which is
-  non-refundable. proceed to get in to the payment section`;
+    type = null;
+    title = "Confirm to Booking";
+    message = `Are you sure you want to book the event with selected date? if it is
+    you will be charged ₹${event.advanceAmount} as booking charge which is
+    non-refundable. proceed to get in to the payment section`;
 
     if (!selectedDate) {
       return setError("Please choose your venue date.");

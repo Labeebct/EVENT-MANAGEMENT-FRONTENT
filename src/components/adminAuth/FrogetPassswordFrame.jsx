@@ -1,9 +1,13 @@
 import { useState } from "react";
+import timeoutLoading from "../../config/timeoutLoading";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const FrogetPassswordFrame = () => {
+  //Loading
+  timeoutLoading();
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const Navigate = useNavigate();
 
@@ -13,22 +17,26 @@ const FrogetPassswordFrame = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { email , secretkey } = e.target;
-      if (!email.value.trim() || !secretkey.value.trim()) setMessage("Please fill all fields");
+      const { email, secretkey } = e.target;
+      if (!email.value.trim() || !secretkey.value.trim())
+        setMessage("Please fill all fields");
       else if (!emailRegex.test(email.value))
         setMessage("Invalid email format");
       else {
         try {
           const response = await axiosInstance.post("/admin/forget-password", {
             email: email.value,
-            secretkey:secretkey.value
+            secretkey: secretkey.value,
           });
           const { data, status } = response;
 
           if (status == 200) {
             setMessage(data.msg);
             setSuccess(true);
-            setTimeout(() => Navigate(`/admin/reset-password?email=${data.email}`), 800);
+            setTimeout(
+              () => Navigate(`/admin/reset-password?email=${data.email}`),
+              800
+            );
           }
         } catch (error) {
           if (error.response) {
@@ -58,7 +66,8 @@ const FrogetPassswordFrame = () => {
     <div className="w-[35%] min-w-[290px] bg-white flex flex-col items-center translate-y-5 h-auto rounded-md box_shadow_black">
       <h3 className="text-[1.7rem] font-playfair mt-9">Forget password</h3>
       <h3 className="mt-7 font-roboto opacity-85 text-[.9rem] text-center px-10">
-        Entered your registered email address and the secret key to reset the password.
+        Entered your registered email address and the secret key to reset the
+        password.
       </h3>
 
       <form

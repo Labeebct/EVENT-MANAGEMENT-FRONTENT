@@ -4,6 +4,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DoneIcon from "@mui/icons-material/Done";
 import weddingImg from "../../../assets/bg (15).jpg";
+import { useSelector } from "react-redux";
 
 const BookingFrame = ({ type, data }) => {
   const [down, setDown] = useState(false);
@@ -21,11 +22,11 @@ const BookingFrame = ({ type, data }) => {
   };
 
   return (
-    <div className="block shadow-box">
+    <div className="block shadow-box mt-2">
       <div className="filter relative items-center w-full bg-white flex  flex-1 h-auto">
         <img
           src={`http://localhost:8082/${data?.event?.eventImage}`}
-          className="md:w-60 w-44 sm:w-52 h-auto p-6 object-cover rounded-lg"
+          className="md:w-60 w-44 h-auto max-h-72 p-6 object-cover rounded-lg"
         />
         <div class="flex relative bg-white justify-between p-4 pl-1 w-full items-center">
           {down ? (

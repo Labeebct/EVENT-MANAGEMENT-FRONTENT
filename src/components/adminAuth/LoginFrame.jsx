@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import timeoutLoading from "../../config/timeoutLoading";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import EyePassword from "../shared/EyePassword";
@@ -7,9 +8,12 @@ import axiosinstance from "../../instance/axiosInstance";
 import BasicAlert from "../shared/BasicAlert";
 
 const LoginFrame = () => {
+  //Loading
+  timeoutLoading();
+
   //Regex for email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const Dispatch = useDispatch()
+  const Dispatch = useDispatch();
   const Navigate = useNavigate();
 
   //Formdata for login
@@ -54,7 +58,13 @@ const LoginFrame = () => {
           } else if (status == 202) {
             setError(data.msg);
             setLoginSuccess(true);
-            setTimeout(() => Navigate(`/admin/complete-profile?email=${data.userExist.email}&role=admin`), 300);
+            setTimeout(
+              () =>
+                Navigate(
+                  `/admin/complete-profile?email=${data.userExist.email}&role=admin`
+                ),
+              300
+            );
           }
         } catch (error) {
           if (error.response) {

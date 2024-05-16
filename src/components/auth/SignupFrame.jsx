@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
+import timeoutLoading from "../../config/timeoutLoading";
 import axiosInstance from "../../instance/axiosInstance";
 import EyePassword from "../shared/EyePassword";
 import { useState } from "react";
 import BasicAlert from "../shared/BasicAlert";
 
 function SignupFrame() {
+  //Loading
+  timeoutLoading();
+
   //Regex for email and for password
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex =

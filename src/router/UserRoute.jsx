@@ -18,28 +18,28 @@ import CompleteProfile from "../pages/shared/CompleteProfile";
 
 const UserRoute = () => {
   return (
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/complete-profile" element={<CompleteProfile />} />
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/verify-otp/:verifyType/:email" element={<Otp />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/complete-profile" element={<CompleteProfile />} />
 
-        <Route path="/" element={<UserLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contactus />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/about" element={<Aboutus />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/view-event" element={<EventDetails />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
+      <Route path="/" element={<UserLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contactus />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/about" element={<Aboutus />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/view-event" element={<EventDetails />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
-        <Route path="*" element={<PageNotFoundContent />} />
-        <Route path="/404" element={<PageNotFoundContent />} />
-        <Route path="/500" element={<InternalServerError />} />
-      </Routes>
+      <Route path="*" element={<PageNotFoundContent />} />
+      <Route path="/404" element={<PageNotFoundContent />} />
+      <Route path="/500" element={<InternalServerError />} />
+    </Routes>
   );
 };
 

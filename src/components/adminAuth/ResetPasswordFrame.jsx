@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import EyePassword from "../shared/EyePassword";
+import timeoutLoading from "../../config/timeoutLoading";
 import BasicAlert from "../shared/BasicAlert";
 import axiosInstance from "../../instance/axiosInstance";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ResetPasswordFrame = () => {
+  //Loading
+  timeoutLoading();
+
   const passwordRegex =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 

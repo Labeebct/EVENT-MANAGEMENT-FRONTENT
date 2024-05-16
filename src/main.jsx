@@ -8,7 +8,7 @@ import CenterAlert from "./context/CenterAlert.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <CenterAlert>
         <Provider store={store}>
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </Provider>
       </CenterAlert>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

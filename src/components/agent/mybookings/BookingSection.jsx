@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BookingFrame from "../../admin/bookings/BookingFrame";
 import axiosInstance from "../../../instance/axiosInstance";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const BookingSection = () => {
   const Navigate = useNavigate();
@@ -29,7 +29,6 @@ const BookingSection = () => {
         }
       }
     };
-
     fetchEvents();
   }, []);
 
