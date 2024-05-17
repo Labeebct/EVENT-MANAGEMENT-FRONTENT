@@ -21,7 +21,7 @@ const CenterAlert = ({ children }) => {
     <AlertContext.Provider value={showAlert}>
       {children}
       {visible && (
-        <div className="h-screen backdrop-blur-[.06rem] absolute inset-0 w-full flex items-center justify-center">
+        <div className="h-screen fixed backdrop-blur-[.06rem] inset-0 w-full flex items-center justify-center">
           <div>
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert severity={type}>{message}</Alert>

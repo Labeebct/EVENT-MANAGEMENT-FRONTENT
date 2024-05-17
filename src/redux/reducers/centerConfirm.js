@@ -19,6 +19,8 @@ const centerConfirm = (state = initialState, action) => {
             return { ...state, isModalOpen: false, proceedPending: true, isLoading: true }
         case 'PENDING':
             return { ...state, isModalOpen: true, proceedPending: true, selectedDate, title, message, type }
+        case 'EVENT_CANCELED' :
+            return {...state , isModalOpen:false , proceedPending:false }
         default:
             return state;
 

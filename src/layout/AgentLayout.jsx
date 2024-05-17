@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Header from "../components/agent/common/Header";
+import { sideAlert } from "../redux/reducers/topSideAlert";
 import Footer from "../components/user/common/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -28,7 +29,7 @@ const UserLayout = () => {
       } else {
         navigate("/login");
         return;
-      }
+      }       
     } else {
       const user = jwtDecode(token);
       if (user.role == "agent") {
@@ -42,6 +43,8 @@ const UserLayout = () => {
     if (socket) {
       socket.on("fetchBooking", (booking) => {
         dispatch(addBooking(booking));
+        dispatch(sideAlert("You hava a new booking in pending"));
+        setTimeout(() => dispatch(sideAlert(null)), 5000);
       });
     }
   }, [socket]);

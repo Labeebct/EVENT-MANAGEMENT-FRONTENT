@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BookingFrame from "../../admin/bookings/BookingFrame";
 import axiosInstance from "../../../instance/axiosInstance";
-import { sideAlert } from "../../../redux/reducers/topSideAlert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -35,8 +34,6 @@ const BookingSection = () => {
 
     if (newBooking) {
       bookings.unshift(newBooking);
-      dispatch(sideAlert("You hava a new booking in pending"));
-      setTimeout(() => dispatch(sideAlert(null)), 2000);
     }
   }, [newBooking]);
 

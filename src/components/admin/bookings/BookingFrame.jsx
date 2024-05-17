@@ -3,11 +3,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DoneIcon from "@mui/icons-material/Done";
-import weddingImg from "../../../assets/bg (15).jpg";
 import { useSelector } from "react-redux";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { useAlert } from "../../../context/CenterAlert";
 
 const BookingFrame = ({ type, data }) => {
   const [down, setDown] = useState(false);
+  const [cancel, setCancel] = useState(data.isCancelled);
+  const centerAlert = useAlert();
+  const socket = useSelector((state) => state.socket.socket);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -19,6 +24,34 @@ const BookingFrame = ({ type, data }) => {
     const formattedMonth = month < 10 ? `0${month}` : month;
 
     return `${formattedDay}-${formattedMonth}-${year}`;
+  };
+
+  const handleCancel = async (bookingId,userId) => {
+    confirmAlert({
+      title: "Confirm to cancel booking",
+      message: "Are you sure you want to cancel booking?",
+      titleClassName: "text-xl font-bold text-green-500",
+      buttons: [
+        {
+          label: "Yes",
+          style: { backgroundColor: "#D80032" },
+          className: "text-white font-bold py-2 px-4 rounded mr-2",
+          onClick: async () => {
+            setCancel(true);
+            socket.emit("cancelEvent", bookingId,userId);
+            centerAlert("success", "Event has been cancelled");
+          },
+        },
+        {
+          label: "No",
+          style: { backgroundColor: "#65B741" },
+          className:
+            "bg-green-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2",
+        },
+      ],
+      overlayClassName:
+        "fixed inset-0 bg-[black] bg-opacity-50 flex justify-center items-center",
+    });
   };
 
   return (
@@ -69,7 +102,7 @@ const BookingFrame = ({ type, data }) => {
             </div>
           </div>
 
-          {type == "admin" && (
+          {data.isConfirmed && (
             <div className="w-full gap-2 absolute right-2 top-0 md:right-3 p-2 h-auto flex justify-end items-center ">
               <button className="p-2 text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">
                 Approved
@@ -77,15 +110,33 @@ const BookingFrame = ({ type, data }) => {
             </div>
           )}
 
+          <div className="w-full gap-2 absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end items-center ">
+            {cancel && (
+              <button
+                disabled
+                className="p-2 px-4 sm:block hidden text-white text-[.7rem] font-semibold rounded-sm font-inter bg-red-700"
+              >
+                Cancelled
+              </button>
+            )}
+          </div>
+
           {type == "agent" && (
             <>
               <div className="w-full gap-2 absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end items-center ">
-                <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-red-700">
-                  Cancel
-                </button>
-                <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">
-                  Approve
-                </button>
+                {!cancel && (
+                  <>
+                    <button
+                      onClick={() => handleCancel(data._id,data.user)}
+                      className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-red-700"
+                    >
+                      Cancel
+                    </button>
+                    <button className="p-2 sm:block hidden text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">
+                      Approve
+                    </button>
+                  </>
+                )}
                 <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-green-600">
                   <DoneIcon sx={{ fontSize: "19px" }} />
                 </button>
