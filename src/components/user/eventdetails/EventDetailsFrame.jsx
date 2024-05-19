@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import BasicAlert from "../../user/../shared/BasicAlert";
 import axiosInstance from "../../../instance/axiosInstance";
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "../../../utils/jwtDecode";
 import { openModal } from "../../../redux/actions/centerConfirm";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { makePayment } from "../../../config/razorPay";
 
 const EventDetailsFrame = () => {
   const Navigate = useNavigate();
@@ -16,6 +17,8 @@ const EventDetailsFrame = () => {
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
   const proceedPending = useSelector((state) => state.confirm.proceedPending);
+  const proceedPayment = useSelector((state) => state.confirm.proceedToPay);
+  const bookedEvent = useSelector((state) => state.confirm.bookedEvent);
 
   const [event, setEvent] = useState({});
   const [error, setError] = useState("");
@@ -123,6 +126,13 @@ const EventDetailsFrame = () => {
         );
     }
   };
+
+  useEffect(() => {
+    if (proceedPayment) {
+      const user = jwtDecode();
+      makePayment(bookedEvent,user);
+    }
+  }, [proceedPayment]);
 
   if (error) setTimeout(() => setError(""), 2000);
 

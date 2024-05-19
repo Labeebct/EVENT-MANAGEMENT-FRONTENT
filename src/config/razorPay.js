@@ -15,7 +15,7 @@ const initializeRazorpay = () => {
     });
 };
 
-export const makePayment = async (event,selectedDate) => {
+export const makePayment = async (bookedEvent, user) => {
     const res = await initializeRazorpay();
 
     if (!res) {
@@ -23,26 +23,23 @@ export const makePayment = async (event,selectedDate) => {
         return;
     }
 
-    const response = await axiosInstance.post("/payment", {
-        advanceAmount: event.advanceAmount,
-        selectedDate: selectedDate.value,
-        eventId: event._id,
-    });
-    const booking = response.data;
+    const response = await axiosInstance.post("/payment", { advanceAmount: bookedEvent.amount });
+    const { orderId } = response.data
 
     var options = {
         key: "rzp_test_WsQWHQupL11gz0",
         name: "Labio",
-        currency: booking.currency,
-        amount: booking.amount,
-        order_id: booking.orderId,
+        currency: bookedEvent.currency,
+        amount: bookedEvent.amount,
+        order_id: orderId,
         description: "Thankyou for your advance amount",
         image: "https://manuarora.in/logo.png",
         handler: async function (response) {
             try {
                 const orderResponse = await axiosInstance.post("/payment-check", {
                     response,
-                    booking,
+                    orderId,
+                    bookedEvent,
                 });
                 const { data, status } = orderResponse;
 
