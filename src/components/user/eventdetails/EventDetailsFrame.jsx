@@ -9,9 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { makePayment } from "../../../config/razorPay";
 
 const EventDetailsFrame = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const userLoggedIn = localStorage.getItem("jwt");
   const socket = useSelector((state) => state.socket.socket);
 
   const queryParams = new URLSearchParams(location.search);
@@ -21,32 +22,44 @@ const EventDetailsFrame = () => {
   const bookedEvent = useSelector((state) => state.confirm.bookedEvent);
 
   const [event, setEvent] = useState({});
+  const [booked, setBooked] = useState(null); // Initialize with null to check if the event is booked
   const [error, setError] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  
+
   let type;
   let title;
   let message;
 
   useEffect(() => {
+    let userId = null;
+    if (userLoggedIn) {
+      const user = jwtDecode(userLoggedIn);
+      userId = user?.userId;
+    }
+
+    const url = userId
+      ? `/view-event?id=${id}&userId=${userId}`
+      : `/view-event?id=${id}`;
+
     const fetchEvent = async () => {
       try {
         dispatch({ type: "loading", payload: true });
-        const response = await axiosInstance.get(`/view-event?id=${id}`);
+        const response = await axiosInstance.get(url);
         dispatch({ type: "loading", payload: false });
         const { data, status } = response;
 
-        if (status == 200) {
+        if (status === 200) {
           setEvent(data.event);
+          setBooked(data.findEventBooked); // Set booked to the response data
         }
       } catch (error) {
         if (error.response) {
           const { data, status } = error.response;
-          if (status == 500) {
-            Navigate("/500");
+          if (status === 500) {
+            navigate("/500");
           }
         } else {
-          Navigate("/500");
+          navigate("/500");
         }
       }
     };
@@ -54,7 +67,39 @@ const EventDetailsFrame = () => {
   }, [id, location]);
 
   useEffect(() => {
+    if (userLoggedIn && booked !== null) {
+      if (booked && !booked.isConfirmed) {
+        dispatch(
+          openModal(
+            (type = "pending"),
+            (title = "Booking Request Sent"),
+            (message =
+              "Your event booking request has been submitted. Once approved by the agent, you will be directed to the payment section to finalize your booking. Thank you for choosing us, and we anticipate confirming your reservation shortly")
+          )
+        );
+      } else if (booked && booked.isConfirmed && !booked.isPaymentDone) {
+        dispatch(
+          openModal(
+            (type = "proceed_payment"),
+            (title = "Your request has been approved"),
+            (message =
+              "We are happy to inform you that your recent request has been reviewed and approved. You can now proceed to payment to confirm your booking.")
+          )
+        );
+      } else if (booked && booked.isCancelled) {
+        dispatch(
+          openModal(
+            (type = "cancell_request"),
+            (title = "Your request has been rejected"),
+            (message =
+              "We regret to inform you that your recent request has been reviewed and rejected by our agent due to certain reasons. We apologize for any inconvenience and encourage you to check other available options.")
+          )
+        );
+      }
+    }
+  }, [booked, dispatch, userLoggedIn]);
 
+  useEffect(() => {
     if (proceedPending) {
       dispatch({ type: "loading", payload: true });
       const jwt = localStorage.getItem("jwt");
@@ -83,7 +128,6 @@ const EventDetailsFrame = () => {
     return () => {
       dispatch({ type: "CANCEL_PAYMENT" });
     };
-
   }, [proceedPending, dispatch]);
 
   const handleDateChange = (selectedOption) => setSelectedDate(selectedOption);
@@ -98,9 +142,7 @@ const EventDetailsFrame = () => {
   const handleBook = () => {
     type = null;
     title = "Confirm to Booking";
-    message = `Are you sure you want to book the event with selected date? if it is
-    you will be charged ₹${event.advanceAmount} as booking charge which is
-    non-refundable. proceed to get in to the payment section`;
+    message = `Are you sure you want to book the event with the selected date? If you proceed, you will be charged ₹${event.advanceAmount} as a booking charge, which is non-refundable. Proceed to get to the payment section.`;
 
     if (!selectedDate) {
       return setError("Please choose your venue date.");
@@ -113,7 +155,7 @@ const EventDetailsFrame = () => {
             (type = "login"),
             (title = "Login to book the event"),
             (message =
-              "You need to login for booking the event, press login button to login/register.")
+              "You need to log in to book the event. Press the login button to log in/register.")
           )
         );
       else
@@ -132,7 +174,7 @@ const EventDetailsFrame = () => {
   useEffect(() => {
     if (proceedPayment) {
       const user = jwtDecode();
-      makePayment(bookedEvent,user,dispatch,socket);
+      makePayment(bookedEvent, user, dispatch, socket);
     }
   }, [proceedPayment]);
 
