@@ -1,4 +1,7 @@
 import axiosInstance from "../instance/axiosInstance";
+import { openModal } from "../redux/actions/centerConfirm";
+import { showGif } from "../redux/reducers/congratGif";
+import { hideGif } from "../redux/reducers/congratGif";
 
 const initializeRazorpay = () => {
     return new Promise((resolve) => {
@@ -15,7 +18,11 @@ const initializeRazorpay = () => {
     });
 };
 
-export const makePayment = async (bookedEvent, user) => {
+let type;
+let title;
+let message;
+
+export const makePayment = async (bookedEvent, user, dispatch, socket) => {
     const res = await initializeRazorpay();
 
     if (!res) {
@@ -44,7 +51,22 @@ export const makePayment = async (bookedEvent, user) => {
                 const { data, status } = orderResponse;
 
                 if (status == 200) {
-                    alert("Success");
+                    socket.emit('BOOKING_COMPLETED', data.bookedEvent)
+                    dispatch(showGif())
+                    setTimeout(() => {
+                        dispatch(hideGif())
+                        dispatch(openModal(
+                            (type = "booked"),
+                            title = 'You Event has been succesfully booked',
+                            message = `We are pleased to inform you
+                             that your event has been successfully booked.
+                              An email containing the details of your assigned
+                               agent has been sent to your email address. Additionally,
+                                we will share your information with the agent so you can
+                                 communicate directly.If you have any further questions or encounter any issues,
+                                  please do not hesitate to contact us directly`,
+                        ))
+                    }, 5000);
                 }
             } catch (error) {
                 if (error.response) {
@@ -58,8 +80,8 @@ export const makePayment = async (bookedEvent, user) => {
             }
         },
         prefill: {
-            name: "Manu Arora",
-            email: "manuarorawork@gmail.com",
+            name: user.username,
+            email: user.email,
             contact: "9999999999",
         },
     };

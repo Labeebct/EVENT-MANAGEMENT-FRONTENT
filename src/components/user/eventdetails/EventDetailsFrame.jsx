@@ -23,7 +23,7 @@ const EventDetailsFrame = () => {
   const [event, setEvent] = useState({});
   const [error, setError] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-
+  
   let type;
   let title;
   let message;
@@ -54,6 +54,7 @@ const EventDetailsFrame = () => {
   }, [id, location]);
 
   useEffect(() => {
+
     if (proceedPending) {
       dispatch({ type: "loading", payload: true });
       const jwt = localStorage.getItem("jwt");
@@ -82,6 +83,7 @@ const EventDetailsFrame = () => {
     return () => {
       dispatch({ type: "CANCEL_PAYMENT" });
     };
+
   }, [proceedPending, dispatch]);
 
   const handleDateChange = (selectedOption) => setSelectedDate(selectedOption);
@@ -130,7 +132,7 @@ const EventDetailsFrame = () => {
   useEffect(() => {
     if (proceedPayment) {
       const user = jwtDecode();
-      makePayment(bookedEvent,user);
+      makePayment(bookedEvent,user,dispatch,socket);
     }
   }, [proceedPayment]);
 

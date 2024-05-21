@@ -6,6 +6,7 @@ import centerConfirm from "./centerConfirm";
 import loadingReducer from "./loading";
 import updateBooking from "./updateBooking";
 import sideTopAlert from "./topSideAlert";
+import showCongratGif from "./congratGif";
 
 const rootReducer = combineReducers({
     sort: messageReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     loading: loadingReducer,
     socket: socket,
     rightAlert: sideTopAlert,
-    updateBooking: updateBooking
+    updateBooking: updateBooking,
+    showCongrat: showCongratGif,
 })
 
 export default rootReducer

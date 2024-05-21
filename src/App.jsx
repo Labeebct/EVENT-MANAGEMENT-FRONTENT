@@ -6,6 +6,7 @@ import TopRightAlert from "./components/shared/TopRightAlert";
 import jwtDecode from "./utils/jwtDecode";
 import UserRouter from "./router/UserRoute";
 import AgentRouter from "./router/AgentRouter";
+import CongratGif from "./components/shared/CongratGif";
 import AdminRouter from "./router/AdminRouter";
 import CenterConfirm from "./components/shared/CenterConfirm";
 import Loading from "./components/shared/Loading";
@@ -20,8 +21,8 @@ const App = () => {
   const type = useSelector((state) => state.confirm.type);
   const message = useSelector((state) => state.confirm.message);
   const isLoading = useSelector((state) => state.loading.isLoading);
-  // const messageAlert = useSelector((state) => state.rightAlert.showAlert);
-  const sideMessage = useSelector((state) => state.rightAlert.message)
+  const showCongratGif = useSelector((state) => state.showCongrat.gifShow);
+  const sideMessage = useSelector((state) => state.rightAlert.message);
   const socket = useSelector((state) => state.socket.socket);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = () => {
 
   return (
     <CategoryContext>
+      {showCongratGif && <CongratGif />}
       {sideMessage && <TopRightAlert message={sideMessage} />}
       {isLoading && <Loading />}
       <Routes>

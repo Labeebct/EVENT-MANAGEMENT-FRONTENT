@@ -18,6 +18,13 @@ html {
     background-repeat: no-repeat;
     background-size:cover;
 }
+.success_gif{
+    background-image: url('./assets/success.gif');
+    background-position: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size:40rem;
+}
 .agent_home_bg{
     background-image: url('./assets/handshake (3).jpg');
     background-position: 50% 70%;

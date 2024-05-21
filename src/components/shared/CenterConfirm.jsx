@@ -12,7 +12,7 @@ const CenterConfirm = ({ type, selectedDate, title, message }) => {
     document.body.classList.add("no-scroll");
     return () => {
       document.body.classList.remove("no-scroll");
-      dispatch({type:'CANCEL_PAYMENT'})
+      dispatch({ type: "CANCEL_PAYMENT" });
     };
   }, []);
 
@@ -75,6 +75,14 @@ const CenterConfirm = ({ type, selectedDate, title, message }) => {
               Proceed to Payment
             </button>
           )}
+          {type === "booked" && (
+            <button
+              onClick={() => dispatch(closeModal())}
+              className="h-[2.8rem] text-[.9rem] duration-200 active:scale-[.95] ease-in-out bg-green-600 rounded-sm shadow-sm flex-1 font-inter text-white font-semibold"
+            >
+              OK
+            </button>
+          )}
 
           {type == "confirm" && (
             <>
@@ -93,6 +101,14 @@ const CenterConfirm = ({ type, selectedDate, title, message }) => {
             </>
           )}
         </div>
+        {type !== "booked" && (
+          <button
+            onClick={() => dispatch(closeModal())}
+            className="p-2 mt-4  border-b "
+          >
+            Go Back
+          </button>
+        )}
       </div>
     </div>
   );
