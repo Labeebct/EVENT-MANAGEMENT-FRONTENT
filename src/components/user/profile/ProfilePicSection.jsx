@@ -23,7 +23,7 @@ const ProfilePicSection = ({ role, profile }) => {
           {profile.mobilenum}
         </h3>
         <h3 className="mt-2 ml-6 md:mt-2 md:ml-14 text-[.9rem] font-roboto">
-          ctlabeebthaliyil@gmail.com
+        {profile.email}
         </h3>
         <div className="">
           <h3 className="mt-2 ml-6 capitalize md:mt-2 md:ml-14 text-[.9rem] font-roboto">
