@@ -1,26 +1,78 @@
 import { Routes, Route } from "react-router-dom";
 import AgentLayout from "../layout/AgentLayout";
 import Home from "../pages/agent/Home";
-import MyEvents from "../pages/agent/MyEvents";
-import MyBookings from "../pages/agent/MyBookings";
-import AddEvents from "../pages/agent/AddEvents";
-import About from "../pages/agent/About";
-import Contact from "../pages/agent/Contact";
-import Profile from "../pages/agent/Profile";
-  
+import { Suspense, lazy } from "react";
+import Loading from "../components/shared/Loading";
+
+const MyEvents = lazy(() => import("../pages/agent/MyEvents"));
+const MyBookings = lazy(() => import("../pages/agent/MyBookings"));
+const AddEvents = lazy(() => import("../pages/agent/AddEvents"));
+const About = lazy(() => import("../pages/agent/About"));
+const Contact = lazy(() => import("../pages/agent/Contact"));
+const Profile = lazy(() => import("../pages/agent/Profile"));
+
 const AgentRouter = () => {
   return (
     <Routes>
-        <Route path="/" element={<AgentLayout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/add-events" element={<AddEvents type={'add'} />} />
-          <Route path="/my-events" element={<MyEvents />} />
-          <Route path="/edit-event" element={<AddEvents type={'edit'} />} />
-          <Route path="/my-bookings" element={<MyBookings />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route> 
+      <Route path="/" element={<AgentLayout />}>
+        <Route path="/home" element={<Home />} />
+        <Route
+          path="/add-events"
+          element={
+            <Suspense fallback={<Loading />}>
+              <AddEvents type={"add"} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/my-events"
+          element={
+            <Suspense fallback={<Loading />}>
+              <MyEvents />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/edit-event"
+          element={
+            <Suspense fallback={<Loading />}>
+              <AddEvents type={"edit"} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/my-bookings"
+          element={
+            <Suspense fallback={<Loading />}>
+              <MyBookings />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Suspense fallback={<Loading />}>
+              <About />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Contact />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Profile />
+            </Suspense>
+          }
+        />
+      </Route>
     </Routes>
   );
 };

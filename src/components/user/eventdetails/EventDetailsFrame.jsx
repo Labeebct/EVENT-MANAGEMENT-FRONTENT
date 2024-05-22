@@ -174,7 +174,7 @@ const EventDetailsFrame = () => {
   useEffect(() => {
     if (proceedPayment) {
       const user = jwtDecode();
-      makePayment(bookedEvent, user, dispatch, socket);
+      makePayment(user, dispatch, socket);
     }
   }, [proceedPayment]);
 

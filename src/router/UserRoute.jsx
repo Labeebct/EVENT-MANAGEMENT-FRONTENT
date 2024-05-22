@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import UserLayout from "../layout/UserLayout";
 import Login from "../pages/userAuth/Login";
 import Signup from "../pages/userAuth/Signup";
@@ -6,15 +7,18 @@ import Otp from "../pages/userAuth/Otp";
 import ForgetPassword from "../pages/userAuth/ForgetPassword";
 import ResetPassword from "../pages/userAuth/ResetPassword";
 import Home from "../pages/user/Home";
-import Contactus from "../pages/user/Contactus";
-import Category from "../pages/user/Category";
-import Aboutus from "../pages/user/Aboutus";
-import Events from "../pages/user/Events";
 import PageNotFoundContent from "../components/shared/404Content";
 import InternalServerError from "../pages/shared/500";
-import Profile from "../pages/user/Profile";
-import EventDetails from "../pages/user/EventDetails";
-import CompleteProfile from "../pages/shared/CompleteProfile";
+import Loading from "../components/shared/Loading";
+
+//Lazy components
+const Contactus = lazy(() => import("../pages/user/Contactus"));
+const Category = lazy(() => import("../pages/user/Category"));
+const Aboutus = lazy(() => import("../pages/user/Aboutus"));
+const Events = lazy(() => import("../pages/user/Events"));
+const Profile = lazy(() => import("../pages/user/Profile"));
+const EventDetails = lazy(() => import("../pages/user/EventDetails"));
+const CompleteProfile = lazy(() => import("../pages/shared/CompleteProfile"));
 
 const UserRoute = () => {
   return (
@@ -28,12 +32,54 @@ const UserRoute = () => {
 
       <Route path="/" element={<UserLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contactus />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/about" element={<Aboutus />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/view-event" element={<EventDetails />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/contact"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Contactus />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/category"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Category />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Aboutus />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Events />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/view-event"
+          element={
+            <Suspense fallback={<Loading />}>
+              <EventDetails />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Profile />
+            </Suspense> 
+          }
+        />
       </Route>
 
       <Route path="*" element={<PageNotFoundContent />} />

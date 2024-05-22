@@ -2,19 +2,22 @@ import { Route, Routes } from "react-router-dom";
 import Signup from "../pages/adminAuth/Signup";
 import Login from "../pages/adminAuth/Login";
 import Dashboard from "../pages/admin/Dashboard";
-import Events from "../pages/admin/Events";
-import Category from "../pages/admin/Category";
-import Users from "../pages/admin/Users";
-import AddCategory from "../pages/admin/AddCategory";
-import AdminLayout from "../layout/AdminLayout";
-import Bookings from "../pages/admin/Bookings";
-import AuthPrivate from "../auth/AuthPrivate";
-import Messages from "../pages/admin/Messages";
-import Agents from "../pages/admin/Agents";
-import ForgetPassword from "../pages/adminAuth/ForgetPassword";
-import ResetPassword from "../pages/adminAuth/ResetPassword";
-import CompleteProfile from "../pages/shared/CompleteProfile";
-import Profile from "../pages/admin/Profile";
+import { Suspense, lazy } from "react";
+import Loading from "../components/shared/Loading";
+
+const Events = lazy(() => import("../pages/admin/Events"));
+const Category = lazy(() => import("../pages/admin/Category"));
+const Users = lazy(() => import("../pages/admin/Users"));
+const AddCategory = lazy(() => import("../pages/admin/AddCategory"));
+const AdminLayout = lazy(() => import("../layout/AdminLayout"));
+const Bookings = lazy(() => import("../pages/admin/Bookings"));
+const AuthPrivate = lazy(() => import("../auth/AuthPrivate"));
+const Messages = lazy(() => import("../pages/admin/Messages"));
+const Agents = lazy(() => import("../pages/admin/Agents"));
+const ForgetPassword = lazy(() => import("../pages/adminAuth/ForgetPassword"));
+const ResetPassword = lazy(() => import("../pages/adminAuth/ResetPassword"));
+const CompleteProfile = lazy(() => import("../pages/shared/CompleteProfile"));
+const Profile = lazy(() => import("../pages/admin/Profile"));
 
 const AdminRouter = () => {
   return (
@@ -28,16 +31,86 @@ const AdminRouter = () => {
       </Route>
 
       <Route path="/" element={<AdminLayout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/agents" element={<Agents />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/bookings" element={<Bookings />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/add-category" element={<AddCategory type={"add"} />} />
-        <Route path="/edit-category" element={<AddCategory type={"edit"} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Suspense fallback={<Loading/>}>
+              <Dashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Events />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/category"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Category />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/agents"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Agents />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Users />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/bookings"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Bookings />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/messages"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Messages />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Profile />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/add-category"
+          element={
+            <Suspense fallback={<Loading />}>
+              <AddCategory type={"add"} />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/edit-category"
+          element={
+            <Suspense fallback={<Loading />}>
+              <AddCategory type={"edit"} />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );

@@ -22,7 +22,10 @@ let type;
 let title;
 let message;
 
-export const makePayment = async (bookedEvent, user, dispatch, socket) => {
+export const makePayment = async (user, dispatch, socket) => {
+    const eventBooked = localStorage.getItem('bookedEvent')
+    const bookedEvent = JSON.parse(eventBooked)
+
     const res = await initializeRazorpay();
 
     if (!res) {

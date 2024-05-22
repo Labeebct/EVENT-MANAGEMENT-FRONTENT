@@ -37,6 +37,8 @@ const UserLayout = () => {
 
       socket.on("eventApproved", (approveEvent) => {
         dispatch(closeModal());
+        const bookedEvent = JSON.stringify(approveEvent);
+        localStorage.setItem("bookedEvent", bookedEvent);
         dispatch({ type: "loading", payload: true });
         setTimeout(() => {
           dispatch({ type: "loading", payload: false });
