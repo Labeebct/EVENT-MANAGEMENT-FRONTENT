@@ -70,7 +70,7 @@ const CategoryFrame = ({ data }) => {
       className={`w-full relative mx-auto duration-200 ease-in-out bg-white flex justify-center flex-col shadow-box my-5 rounded-[.3rem] flex-1 min-w-[250px] max-w-[300px] h-auto p-4`}
     >
       <img
-        src={`http://localhost:8082/${data.categoryImage}`}
+        src={`https://eventapi.labio.shop/${data.categoryImage}`}
         className="w-full h-[10rem]"
         alt="Category"
       />

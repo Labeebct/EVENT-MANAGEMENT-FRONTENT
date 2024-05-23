@@ -5,7 +5,7 @@ const HomePriceToSuit = () => {
   return (
     <div className="h-auto w-auto px-7">
       <div className="w-full h-auto bg-cusBlue rounded-lg flex flex-col justify-center items-center">
-        <h3 className="text-[2rem] mt-12 font-poiretOne font-bold">
+        <h3 className="text-[2rem] text-center mt-12 font-poiretOne font-bold">
           A Price To Suit Everyone
         </h3>
         <h3 className="font-roboto mt-8 md:px-32 px-6 text-center text-[.99rem] text-gray-600">

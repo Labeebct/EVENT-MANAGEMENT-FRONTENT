@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     if (!socket) {
-      const socket = io("https://event-management-backend-b6ht.onrender.com");
+      const socket = io("https://eventapi.labio.shop");
       socket.on("connect", () => {
         console.log("Socket connected!");
       });

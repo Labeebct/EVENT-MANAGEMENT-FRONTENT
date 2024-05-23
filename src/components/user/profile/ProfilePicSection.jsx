@@ -11,7 +11,7 @@ const ProfilePicSection = ({ role, profile }) => {
       ></div>
       <div className="w-full flex pb-9  flex-col  h-auto relative">
         <img
-          src={`http://localhost:8082/${profile.profile}`}
+          src={`https://eventapi.labio.shop/${profile.profile}`}
           className="border-4 md:w-40 md:h-40 w-32 h-32 rounded-[10rem] absolute -top-20 ml-6 md:ml-12 border-white "
           alt=""
         />
@@ -23,7 +23,7 @@ const ProfilePicSection = ({ role, profile }) => {
           {profile.mobilenum}
         </h3>
         <h3 className="mt-2 ml-6 md:mt-2 md:ml-14 text-[.9rem] font-roboto">
-        {profile.email}
+          {profile.email}
         </h3>
         <div className="">
           <h3 className="mt-2 ml-6 capitalize md:mt-2 md:ml-14 text-[.9rem] font-roboto">

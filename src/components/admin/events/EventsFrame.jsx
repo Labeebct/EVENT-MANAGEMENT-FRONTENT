@@ -67,7 +67,7 @@ const EventsFrame = ({ role, data }) => {
   return (
     <div className="filter relative  w-full bg-white flex shadow-box flex-1 h-auto">
       <img
-        src={`http://localhost:8082/${data.eventImage}`}
+        src={`https://eventapi.labio.shop/${data.eventImage}`}
         className="md:w-48 w-44 h-auto p-6 object-cover rounded-lg"
       />
       <div class="flex relative bg-white justify-between p-6 pl-1 w-full ">
@@ -96,7 +96,10 @@ const EventsFrame = ({ role, data }) => {
         </div>
         <div className="w-full absolute right-1 top-1 md:right-3 md:top-3  h-auto flex justify-end pr-5-6 items-center ">
           {role === "agent" && (
-            <button onClick={() => Navigate(`/agent/edit-event?id=${data._id}`)} className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 bg-green-600">
+            <button
+              onClick={() => Navigate(`/agent/edit-event?id=${data._id}`)}
+              className="p-1 text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out mr-3 bg-green-600"
+            >
               <EditIcon sx={{ fontSize: "19px" }} />
             </button>
           )}
@@ -105,7 +108,7 @@ const EventsFrame = ({ role, data }) => {
           </button>
         </div>
       </div>
-     {isBlocked && (
+      {isBlocked && (
         <div className="absolute w-full h-full flex justify-center items-center backdrop-blur-[.04rem] bg-[#4848483f]">
           <btn
             onClick={handleBlock}

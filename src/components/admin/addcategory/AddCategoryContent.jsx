@@ -106,7 +106,9 @@ const AddCategoryContent = ({ type }) => {
       >
         <img
           className="w-36 h-36"
-          src={imageUrl || `http://localhost:8082/${category.categoryImage}`}
+          src={
+            imageUrl || `https://eventapi.labio.shop/${category.categoryImage}`
+          }
           alt=""
         />
         <div className="w-auto mt-3 flex h-[3rem] items-center">

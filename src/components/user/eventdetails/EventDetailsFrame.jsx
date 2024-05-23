@@ -192,7 +192,7 @@ const EventDetailsFrame = () => {
 
       <div className="h-auto p-4 flex-1 flex justify-center items-center">
         <img
-          src={`http://localhost:8082/${event.eventImage}`}
+          src={`https://eventapi.labio.shop/${event.eventImage}`}
           className="max-w-[42rem] max-h-[32rem]  w-[18rem] md:w-full  h-auto "
           alt=""
         />

@@ -9,7 +9,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useNavigate } from "react-router-dom";
 
 const UsersFrame = ({ data }) => {
-  
   const showAlert = useAlert();
 
   const [down, setDown] = useState(false);
@@ -35,7 +34,7 @@ const UsersFrame = ({ data }) => {
                 `/admin/block?id=${data._id}`
               );
               const { status } = response;
-              if (status == 200) { 
+              if (status == 200) {
                 setBlock(!block);
                 showAlert(
                   "success",
@@ -74,7 +73,15 @@ const UsersFrame = ({ data }) => {
     <div className="block">
       <div className="h-32 flex  flex-1  w-full bg-white mx-auto  mt-3">
         <div className="h-full flex justify-center items-center  p-3 min-w-[7rem]">
-          <img src={data?.profile[0]?.profile ? `http://localhost:8082/${data.profile[0].profile}` : blankProfile} className="w-full h-full rounded-sm" alt="" />
+          <img
+            src={
+              data?.profile[0]?.profile
+                ? `https://eventapi.labio.shop/${data.profile[0].profile}`
+                : blankProfile
+            }
+            className="w-full h-full rounded-sm"
+            alt=""
+          />
         </div>
         <div className="h-full relative w-[calc(100%-7rem)] px-3 flex flex-col py-3 gap-1">
           <h4 className="font-inter capitalize font-bold text-slate-700 text-[1rem]">

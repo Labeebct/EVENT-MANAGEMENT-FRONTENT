@@ -1,0 +1,54 @@
+# Query: localhos
+# ContextLines: 1
+
+10 results - 10 files
+
+src\components\admin\addcategory\AddCategoryContent.jsx:
+  108            className="w-36 h-36"
+  109:           src={imageUrl || `https://eventapi.labio.shop/${category.categoryImage}`}
+  110            alt=""
+
+src\components\admin\bookings\BookingFrame.jsx:
+  89          <img
+  90:           src={`https://eventapi.labio.shop/${data?.event?.eventImage}`}
+  91            className="md:w-60 w-44 h-auto max-h-72 p-6 object-cover rounded-lg"
+
+src\components\admin\category\CategoryFrame.jsx:
+  72        <img
+  73:         src={`https://eventapi.labio.shop/${data.categoryImage}`}
+  74          className="w-full h-[10rem]"
+
+src\components\admin\events\EventsFrame.jsx:
+  69        <img
+  70:         src={`https://eventapi.labio.shop/${data.eventImage}`}
+  71          className="md:w-48 w-44 h-auto p-6 object-cover rounded-lg"
+
+src\components\admin\users\UsersFrame.jsx:
+  76          <div className="h-full flex justify-center items-center  p-3 min-w-[7rem]">
+  77:           <img src={data?.profile[0]?.profile ? `https://eventapi.labio.shop/${data.profile[0].profile}` : blankProfile} className="w-full h-full rounded-sm" alt="" />
+  78          </div>
+
+src\components\agent\addevents\AddEventFrame.jsx:
+  174            className="w-36 h-36"
+  175:           src={imageUrl || `https://eventapi.labio.shop/${event.eventImage}`}
+  176            alt=""
+
+src\components\user\eventdetails\EventDetailsFrame.jsx:
+  194          <img
+  195:           src={`https://eventapi.labio.shop/${event.eventImage}`}
+  196            className="max-w-[42rem] max-h-[32rem]  w-[18rem] md:w-full  h-auto "
+
+src\components\user\events\EventsFrame.jsx:
+  8        <img
+  9:         src={`https://eventapi.labio.shop/${data.eventImage}`}
+  10          className="w-full p-6 h-[280px] object-cover rounded-md"
+
+src\components\user\home\HomeCatFrame.jsx:
+  12        <img
+  13:         src={`https://eventapi.labio.shop/${list.categoryImage}`}
+  14          className="w-full h-[13rem]"
+
+src\components\user\profile\ProfilePicSection.jsx:
+  13          <img
+  14:           src={`https://eventapi.labio.shop/${profile.profile}`}
+  15            className="border-4 md:w-40 md:h-40 w-32 h-32 rounded-[10rem] absolute -top-20 ml-6 md:ml-12 border-white "

@@ -172,7 +172,7 @@ const AddEventFrame = ({ type }) => {
       <div className="w-full h-auto flex flex-col py-4 items-start justify-center">
         <img
           className="w-36 h-36"
-          src={imageUrl || `http://localhost:8082/${event.eventImage}`}
+          src={imageUrl || `https://eventapi.labio.shop/${event.eventImage}`}
           alt=""
         />
         <div className="w-auto mt-3 ml-5 flex h-[3rem] items-center">

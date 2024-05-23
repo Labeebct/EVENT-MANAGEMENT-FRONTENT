@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://event-management-backend-b6ht.onrender.com',
+    baseURL: 'https://eventapi.labio.shop',
     timeout: 10000
 })
 

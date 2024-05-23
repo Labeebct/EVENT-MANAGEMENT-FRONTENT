@@ -6,11 +6,11 @@ const HomeCatFrame = ({ list, from }) => {
     <div
       className={`w-[20%] duration-200 ease-in-out ${
         from == "home" && "hover:-translate-y-2"
-      } bg-white mx-auto flex justify-center flex-col shadow-box my-5 rounded-[.3rem] min-w-[300px] h-auto p-4`}
+      } bg-white mx-auto flex justify-center flex-col shadow-box my-5 rounded-[.3rem] min-w-[290px] w-[24%] h-auto p-4`}
       key={list.id}
     >
       <img
-        src={`http://localhost:8082/${list.categoryImage}`}
+        src={`https://eventapi.labio.shop/${list.categoryImage}`}
         className="w-full h-[13rem]"
         alt="Category"
       />

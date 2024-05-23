@@ -87,7 +87,7 @@ const BookingFrame = ({ type, data }) => {
     <div className="block shadow-box mt-2">
       <div className="filter relative items-center w-full bg-white flex  flex-1 h-auto">
         <img
-          src={`http://localhost:8082/${data?.event?.eventImage}`}
+          src={`https://eventapi.labio.shop/${data?.event?.eventImage}`}
           className="md:w-60 w-44 h-auto max-h-72 p-6 object-cover rounded-lg"
         />
         <div class="flex relative bg-white justify-between p-4 pl-1 w-full items-center">

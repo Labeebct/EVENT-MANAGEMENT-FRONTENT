@@ -6,7 +6,7 @@ const EventsFrame = ({ data }) => {
   return (
     <div className="mb-6 shadow-box flex-1 h-auto">
       <img
-        src={`http://localhost:8082/${data.eventImage}`}
+        src={`https://eventapi.labio.shop/${data.eventImage}`}
         className="w-full p-6 h-[280px] object-cover rounded-md"
       />
       <div class="flex justify-between p-6 items-center">
