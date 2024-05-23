@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { inject } from '@vercel/analytics';
 import { useEffect, useState } from "react";
 import CategoryContext from "./context/CategoryContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ import io from "socket.io-client";
 
 const App = () => {
   const dispatch = useDispatch();
+  inject();
   const confirmModal = useSelector((state) => state.confirm.isModalOpen);
   const advanceAmount = useSelector((state) => state.confirm.advanceAmount);
   const selectedDate = useSelector((state) => state.confirm.selectedDate);

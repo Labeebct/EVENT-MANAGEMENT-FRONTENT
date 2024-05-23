@@ -133,9 +133,34 @@ const BookingFrame = ({ type, data }) => {
 
           {approved && (
             <div className="w-full gap-2 absolute right-2 top-0 md:right-3 p-2 h-auto flex justify-end items-center ">
-              <button disabled className="p-2 text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700">
-                Approved
-              </button>
+              <div className="h-auto w-auto flex gap-2">
+                <button
+                  disabled
+                  className="p-2 text-white text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter bg-green-700"
+                >
+                  Approved
+                </button>
+
+                {!data.isPaymentDone ? (
+                  <>
+                    <button
+                      disabled
+                      className="p-2 text-white flex justify-center items-center gap-1 text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter shadow-sm bg-red-700"
+                    >
+                      Payment <CloseIcon className="text-red-600" sx={{ fontSize: "19px" }} />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      disabled
+                      className="p-2 text-white flex justify-center items-center gap-1 text-[.7rem] font-semibold drop-shadow-md duration-100 active:scale-[.98] ease-in-out rounded-sm font-inter shadow-sm bg-green-700"
+                    >
+                      Payment <DoneIcon className="text-green-600" sx={{ fontSize: "19px" }} />
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           )}
 
@@ -169,12 +194,16 @@ const BookingFrame = ({ type, data }) => {
                     </button>
                   </>
                 )}
-                <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-green-600">
-                  <DoneIcon sx={{ fontSize: "19px" }} />
-                </button>
-                <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-red-600">
-                  <CloseIcon sx={{ fontSize: "19px" }} />
-                </button>
+                {!data?.isConfirmed && (
+                  <>
+                    <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-green-600">
+                      <DoneIcon sx={{ fontSize: "19px" }} />
+                    </button>
+                    <button className="p-1 mt-1 ml-1 sm:hidden block text-white text-[.7rem] duration-100 active:scale-[.95] ease-in-out  bg-red-600">
+                      <CloseIcon sx={{ fontSize: "19px" }} />
+                    </button>
+                  </>
+                )}
               </div>
             </>
           )}
