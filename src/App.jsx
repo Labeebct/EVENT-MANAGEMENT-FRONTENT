@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { inject } from '@vercel/analytics';
+import { inject } from "@vercel/analytics";
 import { useEffect, useState } from "react";
 import CategoryContext from "./context/CategoryContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     if (!socket) {
-      const socket = io("http://localhost:8082");
+      const socket = io("https://event-management-backend-b6ht.onrender.com");
       socket.on("connect", () => {
         console.log("Socket connected!");
       });

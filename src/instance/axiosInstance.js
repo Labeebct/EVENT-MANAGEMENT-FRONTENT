@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://event-management-backend-eight.vercel.app',
+    baseURL: 'https://event-management-backend-b6ht.onrender.com',
     timeout: 10000
 })
 
@@ -20,4 +20,4 @@ axiosInstance.interceptors.request.use((config) => {
 
 
 
-export default axiosInstance   
+export default axiosInstance     
