@@ -48,9 +48,9 @@ const App = () => {
       {sideMessage && <TopRightAlert message={sideMessage} />}
       {isLoading && <Loading />}
       <Routes>
-        <Route path="/*" element={<UserRouter />} />
         <Route path="/admin/*" element={<AdminRouter />} />
         <Route path="/agent/*" element={<AgentRouter />} />
+        <Route path="/*" element={<UserRouter />} />
       </Routes>
       {confirmModal && (
         <CenterConfirm
