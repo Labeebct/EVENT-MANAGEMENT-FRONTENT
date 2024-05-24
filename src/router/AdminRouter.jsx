@@ -21,12 +21,11 @@ const Profile = lazy(() => import("../pages/admin/Profile"));
 const AdminRouter = () => {
   return (
     <Routes>
-
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/forget-password" element={<ForgetPassword />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/complete-profile" element={<CompleteProfile />} />
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/signup" element={<Signup />} />
+      <Route exact path="/forget-password" element={<ForgetPassword />} />
+      <Route exact path="/reset-password" element={<ResetPassword />} />
+      <Route exact path="/complete-profile" element={<CompleteProfile />} />
 
       <Route path="/" element={<AdminLayout />}>
         <Route
