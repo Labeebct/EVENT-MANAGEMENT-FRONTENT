@@ -4,7 +4,6 @@ import Login from "../pages/adminAuth/Login";
 import Dashboard from "../pages/admin/Dashboard";
 import { Suspense, lazy } from "react";
 import Loading from "../components/shared/Loading";
-import AuthPrivate from "../auth/AuthPrivate";
 
 const Events = lazy(() => import("../pages/admin/Events"));
 const Category = lazy(() => import("../pages/admin/Category"));
@@ -22,13 +21,12 @@ const Profile = lazy(() => import("../pages/admin/Profile"));
 const AdminRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<AuthPrivate />}>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/complete-profile" element={<CompleteProfile />} />
-      </Route>
+
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/complete-profile" element={<CompleteProfile />} />
 
       <Route path="/" element={<AdminLayout />}>
         <Route
