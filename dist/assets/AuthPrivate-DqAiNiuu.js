@@ -1,0 +1,1 @@
+import{d as s,u as n,r,I as c,j as l,O as i}from"./index-G4zhL9fC.js";const d=()=>{const o=s(t=>t.auth),e=localStorage.getItem("jwt"),a=n();return r.useEffect(()=>{if(o||e)if(console.log("have token"),c(e).role=="admin"){console.log("admin token"),a("/admin/dashboard");return}else return},[]),l.jsx(i,{})};export{d as default};
