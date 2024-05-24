@@ -188,7 +188,7 @@ const Header = () => {
         </div>
       </div>
       <div className="w-full sm:hidden flex items-center justify-center overflow-hidden">
-        <ul className="flex w-full items-center justify-center gap-1 px-3 z-30 bg-white text-[#000000bd]">
+        <ul className="flex w-full items-center justify-center gap-1 px-5 z-30 bg-white text-[#000000bd]">
           <Link to={"/"}>
             <li
               className={`px-2 py-4 hover:-translate-y-[.15rem] ease-out duration-200 ${

@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import AgentLayout from "../layout/AgentLayout";
-import Home from "../pages/agent/Home";
 import { Suspense, lazy } from "react";
 import Loading from "../components/shared/Loading";
 
+const Home = lazy(() => import("../pages/agent/Home"));
 const MyEvents = lazy(() => import("../pages/agent/MyEvents"));
 const MyBookings = lazy(() => import("../pages/agent/MyBookings"));
 const AddEvents = lazy(() => import("../pages/agent/AddEvents"));
@@ -15,7 +15,14 @@ const AgentRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<AgentLayout />}>
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <Suspense fallback={<Loading />}>
+              <Home />
+            </Suspense>
+          }
+        />
         <Route
           path="/add-events"
           element={

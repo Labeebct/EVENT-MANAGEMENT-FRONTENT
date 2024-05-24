@@ -4,6 +4,7 @@ import Login from "../pages/adminAuth/Login";
 import Dashboard from "../pages/admin/Dashboard";
 import { Suspense, lazy } from "react";
 import Loading from "../components/shared/Loading";
+import AuthPrivate from "../auth/AuthPrivate";
 
 const Events = lazy(() => import("../pages/admin/Events"));
 const Category = lazy(() => import("../pages/admin/Category"));
@@ -11,7 +12,6 @@ const Users = lazy(() => import("../pages/admin/Users"));
 const AddCategory = lazy(() => import("../pages/admin/AddCategory"));
 const AdminLayout = lazy(() => import("../layout/AdminLayout"));
 const Bookings = lazy(() => import("../pages/admin/Bookings"));
-const AuthPrivate = lazy(() => import("../auth/AuthPrivate"));
 const Messages = lazy(() => import("../pages/admin/Messages"));
 const Agents = lazy(() => import("../pages/admin/Agents"));
 const ForgetPassword = lazy(() => import("../pages/adminAuth/ForgetPassword"));
@@ -34,7 +34,7 @@ const AdminRouter = () => {
         <Route
           path="/dashboard"
           element={
-            <Suspense fallback={<Loading/>}>
+            <Suspense fallback={<Loading />}>
               <Dashboard />
             </Suspense>
           }
