@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Signup from "../pages/adminAuth/Signup";
 import Login from "../pages/adminAuth/Login";
+import Signup from "../pages/adminAuth/Signup";
 import Dashboard from "../pages/admin/Dashboard";
 import { Suspense, lazy } from "react";
 import Loading from "../components/shared/Loading";

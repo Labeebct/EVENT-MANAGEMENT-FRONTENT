@@ -181,7 +181,7 @@ const EventDetailsFrame = () => {
   if (error) setTimeout(() => setError(""), 2000);
 
   return (
-    <div className="h-auto mt-10 relative overflow-hidden sm:-mt-6  flex flex-col md:flex-row w-[80%] shadow-box">
+    <div className="h-auto mt-10 relative overflow-hidden sm:-mt-6  flex flex-col md:flex-row w-[85%] shadow-box">
       <div
         className={`absolute top-0 transition-transform p-1 ${
           error ? "translate-x-0" : "translate-x-56"

@@ -23,7 +23,7 @@ const ContactForm = ({ role }) => {
           Contact us
         </h3>
       </div>
-      <div className="w-full  h-auto  flex justify-center">
+      <div className="w-full  h-auto p-2  flex justify-center">
         <div className="w-full p-10 h-auto mt-8 sm:mt-0 flex justify-center flex-wrap">
           <div className="h-auto flex flex-col lg:flex-row items-center flex-1 justify-center">
             <Formik
