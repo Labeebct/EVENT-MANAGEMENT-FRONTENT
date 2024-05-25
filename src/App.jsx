@@ -44,27 +44,22 @@ const App = () => {
 
   return (
     <CategoryContext>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          {showCongratGif && <CongratGif />}
-          {sideMessage && <TopRightAlert message={sideMessage} />}
-          <Routes>
-            <Route path="/admin/*" element={<AdminRouter />} />
-            <Route path="/agent/*" element={<AgentRouter />} />
-            <Route path="/*" element={<UserRouter />} />
-          </Routes>
-          {confirmModal && (
-            <CenterConfirm
-              type={type}
-              title={title}
-              message={message}
-              advanceAmount={advanceAmount}
-              selectedDate={selectedDate}
-            />
-          )}
-        </>
+      {isLoading && <Loading />}
+      {showCongratGif && <CongratGif />}
+      {sideMessage && <TopRightAlert message={sideMessage} />}
+      <Routes>
+        <Route path="/admin/*" element={<AdminRouter />} />
+        <Route path="/agent/*" element={<AgentRouter />} />
+        <Route path="/*" element={<UserRouter />} />
+      </Routes>
+      {confirmModal && (
+        <CenterConfirm
+          type={type}
+          title={title}
+          message={message}
+          advanceAmount={advanceAmount}
+          selectedDate={selectedDate}
+        />
       )}
     </CategoryContext>
   );
